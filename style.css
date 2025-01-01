@@ -1,0 +1,14 @@
+#notification-bell.active {
+    border: 2px solid white;
+    border-radius: 50%;
+    padding: 4px;
+}
+
+#profile-menu a:hover {
+    background-color: #f3f4f6;
+    color: #1f2937;
+}
+
+.hidden {
+    display: none;
+}
