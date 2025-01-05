@@ -15,19 +15,26 @@
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="flex shrink-0 items-center">
                         <img class="h-8 w-auto" src="images/logo.webp" alt="logo">
-                        <a href="index.html" class="ml-2 text-lg font-bold text-white">                       
-                        TuitionVault
+                        <a href="index.html" class="ml-2 text-lg font-bold text-white">
+                            TuitionVault
                         </a>
                     </div>
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4">
-                            <a href="#" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Dashboard</a>
-                            <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">My Tuition</a>
-                            <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">My applications</a>
+                            <a href="index.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" >Dashboard</a>
+                            <!-- Conditional Buttons -->
+                            <a id="my-tuition" href="my_tuition.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" >My Tuition</a>
+                            <a id="my-applications" href="my_application.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">My Applications</a>
                         </div>
                     </div>
                 </div>
+
                 <div class="flex items-center space-x-4">
+                    <!-- Login and Register Buttons -->
+                    <div id="auth-buttons" class="flex items-center space-x-4">
+                        <a href="login.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Login</a>
+                        <a href="sign_up.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Register</a>
+                    </div>
                     <!-- Notification Bell -->
                     <div class="relative">
                         <button id="notification-bell" class="relative text-gray-400 hover:text-white focus:outline-none focus:ring-0">
@@ -51,9 +58,13 @@
                             </button>
                         </div>
                         <div id="profile-menu" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none hidden" role="menu" aria-orientation="vertical" aria-labelledby="profile-toggle">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Your Profile</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">History</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</a>
+                            <!-- Conditionally Rendered -->
+                            <a href="profile.html" id="profile-option" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">Your Profile</a>
+                            <a href="history.html" id="history-option" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">History</a>
+                            <a href="#" onclick="logoutUser()" id ="signout-option" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</a>
+                            <!-- Unauthorized Message -->
+                            <p id="unauth-message" class="px-4 py-2 text-sm text-gray-700">Login to access your account</p>
+                            <a href="login.html" id="login-button" class="block px-4 py-2 text-sm text-blue-600 hover:underline">Login</a>
                         </div>
                     </div>
                 </div>
@@ -63,9 +74,30 @@
 </header>
 
 <main>
-    <!-- Content goes here -->
+    <body class="bg-gray-100 text-gray-800">
+        <div class="container mx-auto p-6">
+            <h1 class="text-2xl font-bold text-center mb-4">User History</h1>
+            <div id="history-table" class="overflow-x-auto">
+                <table class="table-auto w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="border border-gray-300 px-4 py-2">Post ID</th>
+                            <th class="border border-gray-300 px-4 py-2">Title</th>
+                            <th class="border border-gray-300 px-4 py-2">Applied Date</th>
+                            <th class="border border-gray-300 px-4 py-2">Status</th>
+                            <th class="border border-gray-300 px-4 py-2">Approved Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-body">
+                        <!-- Data will be injected here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+        
+    </body>
 </main>
-
 
 
 <footer class="fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
@@ -87,7 +119,8 @@
     </ul>
 </footer>
 
-
 <script src="app.js"></script>
+<script src="history.js"></script>
+<script src="logout.js"></script>
 </body>
 </html>

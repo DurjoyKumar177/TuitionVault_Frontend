@@ -21,13 +21,14 @@
                     </div>
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4">
-                            <a href="index.html" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Dashboard</a>
+                            <a href="index.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" >Dashboard</a>
                             <!-- Conditional Buttons -->
-                            <a id="my-tuition" href="my_tuition.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white hidden">My Tuition</a>
-                            <a id="my-applications" href="my_application.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white hidden">My Applications</a>
+                            <a id="my-tuition" href="my_tuition.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" >My Tuition</a>
+                            <a id="my-applications" href="my_application.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">My Applications</a>
                         </div>
                     </div>
                 </div>
+
                 <div class="flex items-center space-x-4">
                     <!-- Login and Register Buttons -->
                     <div id="auth-buttons" class="flex items-center space-x-4">
@@ -72,69 +73,63 @@
     </nav>
 </header>
 
-<main>
-  <div class="relative">
-    <!-- Filter Section -->
-    <div class="flex flex-wrap justify-around items-center bg-gray-100 p-4 shadow-md rounded-lg mb-6">
-      <!-- Filter by Class -->
-      <div class="relative mb-6">
-        <select id="class-filter" class="appearance-none block w-48 bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded-lg shadow-sm leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-          <option value="">Filter by Class</option>
-        </select>
-        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-          <svg class="w-4 h-4 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
-      </div>
-
-      <!-- Filter by Location -->
-      <div class="relative">
-        <select id="location-filter" class="appearance-none block w-48 bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded-lg shadow-sm leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-          <option value="">Filter by Location</option>
-        </select>
-        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-          <svg class="w-4 h-4 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
-      </div>
-
-      <!-- Search by Title -->
-      <div class="relative w-1/3">
-        <input id="title-search" type="text" placeholder="Search by Title" class="block w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-      </div>
-
-      <!-- Filter by Monthly Payment -->
-      <div class="flex flex-col items-center space-y-2">
-        <h4 class="text-lg font-semibold text-gray-700">Filter by Salary</h4>
-        <div class="flex items-center space-x-4">
-          <input id="salary-min" type="number" placeholder="Min Payment" class="block w-24 bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
-          <input id="salary-max" type="number" placeholder="Max Payment" class="block w-24 bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
-          <button id="salary-button" class="bg-blue-500 text-white text-sm py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Apply</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="container mx-auto p-4">
-      <!-- Grid to display 3 cards in a row -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="card-container">
-        <!-- Cards will be dynamically generated here -->
-      </div>
-
-      <div id="details-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-2/3">
-            <button id="modal-close" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
-                &times;
-            </button>
-            <div id="modal-content"></div>
+<main class="bg-gray-100 w-screen">
+    <!-- Profile Container -->
+    <div class="container mx-auto p-10">
+        <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-xl">
+  
+            <!-- Profile Header -->
+            <div class="flex items-center space-x-6 mb-8">
+                <img id="profile-img" src="" alt="Personal Photo"
+                    class="w-32 h-32 rounded-full border-4 border-blue-500 shadow-lg transform hover:scale-110 transition duration-300 ease-in-out">
+                <div>
+                    <h1 id="profile-name" class="text-3xl font-bold text-gray-800"></h1>
+                    <p id="profile-phone" class="text-gray-600 mt-1"></p>
+                </div>
+            </div>
+  
+            <!-- Personal Info Section -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
+                <div class="space-y-2">
+                    <p class="text-gray-800 font-medium">Date of Birth:</p>
+                    <p id="profile-dob" class="text-gray-600"></p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-gray-800 font-medium">Address:</p>
+                    <p id="profile-address" class="text-gray-600"></p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-gray-800 font-medium">Achieved Degree:</p>
+                    <p id="profile-degree" class="text-gray-600"></p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-gray-800 font-medium">Running Degree:</p>
+                    <p id="profile-running-degree" class="text-gray-600"></p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-gray-800 font-medium">Current Organization:</p>
+                    <p id="profile-org" class="text-gray-600"></p>
+                </div>
+            </div>
+  
+            <!-- Certificate Section -->
+            <div class="mb-8">
+                <p class="text-gray-800 font-medium mb-2">Degree Certificate:</p>
+                <a id="certificate-link" href="#" class="text-blue-500 hover:underline" target="_blank">View Certificate</a>
+            </div>
+  
+            <!-- Buttons Section -->
+            <div class="flex justify-evenly mt-6 space-x-4">
+                <!-- Edit Profile Button -->
+                <a href="update_profile.html" class="inline-block px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">Edit Profile</a>
+                
+                <!-- Change Password Button -->
+                <a href="#" class="inline-block px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition duration-300">Change Password</a>
+            </div>
         </div>
     </div>
-    </div>
-  </div>
+  <br><br>
 </main>
-
 
 <footer class="fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
     <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="#" class="hover:underline">TuitionVault™</a>. All Rights Reserved.
@@ -157,6 +152,6 @@
 
 <script src="app.js"></script>
 <script src="logout.js"></script>
-<script src="filter.js"></script>
+<script src="profile.js"></script>
 </body>
 </html>
