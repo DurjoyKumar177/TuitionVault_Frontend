@@ -30,12 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
         return response.json();
     })
     .then(data => {
-        console.log(data); // Log the entire response to check the structure
+        console.log(data); 
         
         // Ensure data has the necessary properties
         if (data.user && data.phone_number_1 && data.personal_photo) {
-            // Update the profile data in the HTML
-            document.getElementById('profile-img').src = "http://127.0.0.1:8000" + data.personal_photo || "default-image.jpg"; // Fallback if no photo
+
+            document.getElementById('profile-img').src = "http://127.0.0.1:8000" + data.personal_photo || "profile_placeholder.jpg";
             document.getElementById('profile-name').textContent = data.user || "N/A";
             document.getElementById('profile-phone').textContent = `Phone: ${data.phone_number_1}, ${data.phone_number_2 || "N/A"}`;
             document.getElementById('profile-dob').textContent = data.date_of_birth || "N/A";
@@ -54,3 +54,5 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Failed to load profile data. Please try again later.");
     });
 });
+
+
