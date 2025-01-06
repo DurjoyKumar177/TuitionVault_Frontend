@@ -1,4 +1,3 @@
-// Select elements
 const notificationBell = document.getElementById("notification-bell");
 const notificationMessage = document.getElementById("notification-message");
 const profileToggle = document.getElementById("profile-toggle");
@@ -11,20 +10,57 @@ const historyOption = document.getElementById("history-option");
 const signoutOption = document.getElementById("signout-option");
 const unauthMessage = document.getElementById("unauth-message");
 const loginButton = document.getElementById("login-button");
+const userProfileIcon = document.getElementById("user-profile-icon");
 
 // Function to check if the user is authenticated by the token in localStorage
 function checkAuthStatus() {
   const token = localStorage.getItem("token");
+  return !!token; 
+}
 
-  if (token) {
-    return true;  // User is authenticated
+// Function to fetch user profile image from the API
+async function fetchUserProfileImage() {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    userProfileIcon.src = "images/user.png";
+    return;
   }
-  return false;  // User is not authenticated
+
+  try {
+    const response = await fetch("http://127.0.0.1:8000/accounts/profile/", {
+      method: "GET",
+      headers: {
+        Authorization: `Token ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+
+      if (data.personal_photo) {
+        
+        const profileImageUrl = `http://127.0.0.1:8000/${data.personal_photo}`;
+        userProfileIcon.src = profileImageUrl;
+      } else {
+        console.warn("Profile image not found, using default placeholder.");
+        userProfileIcon.src = "images/user.png";
+      }
+    } 
+    else {
+      console.error("Failed to fetch profile image:", response.statusText);
+      userProfileIcon.src = "images/user.png";
+    }
+  } catch (error) {
+    console.error("Error fetching profile image:", error);
+    userProfileIcon.src = "images/user.png";
+  }
 }
 
 // Function to initialize the UI based on authentication status
 function initializeUI() {
-  const isAuthenticated = checkAuthStatus(); // Check the authentication status using the token
+  const isAuthenticated = checkAuthStatus();
 
   if (isAuthenticated) {
     // Show authenticated user options
@@ -36,6 +72,9 @@ function initializeUI() {
     signoutOption.classList.remove("hidden");
     unauthMessage.classList.add("hidden");
     loginButton.classList.add("hidden");
+
+    // Fetch and display the user's profile image
+    fetchUserProfileImage();
   } else {
     // Show unauthorized user options
     authButtons.classList.remove("hidden");
@@ -46,6 +85,9 @@ function initializeUI() {
     signoutOption.classList.add("hidden");
     unauthMessage.classList.remove("hidden");
     loginButton.classList.remove("hidden");
+
+    // Set default image for unauthorized user
+    userProfileIcon.src = "images/user.png";
   }
 }
 
@@ -69,6 +111,4 @@ document.addEventListener("click", (event) => {
   }
 });
 
-// Initialize the UI on page load
 initializeUI();
-
