@@ -58,11 +58,13 @@ document.addEventListener("DOMContentLoaded", function () {
         return response.json();
     })
     .then((data) => {
-        console.log(data); // Log the response to verify structure
-        cardContainer.innerHTML = ""; // Clear existing cards
+        console.log(data); 
+        cardContainer.innerHTML = ""; 
         data.forEach((post) => {
-            const card = createCard(post);
-            cardContainer.appendChild(card);
+            if (post.tuition_post.availability) { 
+                const card = createCard(post);
+                cardContainer.appendChild(card);
+            }
         });
     })
     .catch((error) => {

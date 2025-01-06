@@ -20,22 +20,28 @@ document.addEventListener("DOMContentLoaded", function () {
     const card = document.createElement("div");
     card.className =
       "flex bg-white shadow-md rounded-lg overflow-hidden transform transition duration-300 hover:shadow-xl hover:scale-105";
+    
     card.innerHTML = ` 
-        <div class="w-1/3">
-          <img src="${post.image}" alt="Tuition Image" class="w-full h-full object-cover">
-        </div>
-        <div class="w-2/3 p-4">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">${post.title}</h3>
-          <p class="text-sm text-gray-600 mb-2"><strong>Class:</strong> ${post.class_name}</p>
-          <p class="text-sm text-gray-600 mb-2"><strong>Subjects:</strong> ${post.subjects}</p>
-          <p class="text-sm text-gray-600 mb-2"><strong>Location:</strong> ${post.location}</p>
-          <p class="text-sm text-gray-600 mb-2"><strong>Monthly Payment:</strong> ৳${post.monthly_payment}</p>
-          <a href="${post.google_map_link}" target="_blank" class="inline-block text-blue-500 underline text-sm">View on Map</a>
-          <a href="details.html?id=${post.id}" class="inline-block mt-4 bg-blue-500 text-white text-sm py-2 px-4 rounded hover:bg-blue-600">Details</a>
-        </div>
-      `;
+      <div class="w-1/3">
+        <img 
+          src="${post.image ? post.image : "/images/tutor_placeholder.webp"}" 
+          alt="Tuition Image" 
+          class="w-full h-full object-cover" 
+          onerror="this.src='/images/tutor_placeholder.webp';">
+      </div>
+      <div class="w-2/3 p-4">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">${post.title}</h3>
+        <p class="text-sm text-gray-600 mb-2"><strong>Class:</strong> ${post.class_name}</p>
+        <p class="text-sm text-gray-600 mb-2"><strong>Subjects:</strong> ${post.subjects}</p>
+        <p class="text-sm text-gray-600 mb-2"><strong>Location:</strong> ${post.location}</p>
+        <p class="text-sm text-gray-600 mb-2"><strong>Monthly Payment:</strong> ৳${post.monthly_payment}</p>
+        <a href="${post.google_map_link}" target="_blank" class="inline-block text-blue-500 underline text-sm">View on Map</a>
+        <a href="details.html?id=${post.id}" class="inline-block mt-4 bg-blue-500 text-white text-sm py-2 px-4 rounded hover:bg-blue-600">Details</a>
+      </div>
+    `;    
     return card;
   }
+  
 
   function populateDropdown(api, dropdown) {
     fetch(api)
