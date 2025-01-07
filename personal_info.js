@@ -24,28 +24,10 @@ const handlePersonalInfo = async (event) => {
   // Reset any previous error messages
   clearErrors();
 
-  // Get CSRF token from cookies
-  const getCSRFToken = () => {
-    const cookies = document.cookie.split("; ");
-    for (const cookie of cookies) {
-      const [name, value] = cookie.split("=");
-      if (name === "csrftoken") {
-        return value;
-      }
-    }
-    return null;
-  };
-
-  const csrfToken = getCSRFToken();
-
-  // Make the API call to submit personal information
   try {
     const response = await fetch("http://127.0.0.1:8000/accounts/personal-info/", {
       method: "POST",
-      headers: {
-        "X-CSRFToken": csrfToken, // Include CSRF token
-      },
-      credentials: "include", // Ensure cookies are sent with the request
+      credentials: "include", // Ensure cookies (session ID) are sent with the request
       body: formData, // Use FormData for file uploads
     });
 

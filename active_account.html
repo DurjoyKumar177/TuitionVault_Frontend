@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Activation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div id="message-container" class="bg-white p-8 rounded-lg shadow-xl max-w-lg w-full text-center">
+        <div id="loading-message" class="text-lg text-gray-600">
+            <p>Activating your account, please wait...</p>
+        </div>
+    </div>
+
+    <script>
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        async function activateAccount() {
+            const uid = getUrlParameter('uid');
+            const token = getUrlParameter('token');
+
+            const messageContainer = document.getElementById('message-container');
+            const loadingMessage = document.getElementById('loading-message');
+
+            if (!uid || !token) {
+                messageContainer.innerHTML = `
+                    <h1 class="text-2xl font-bold text-red-500">Error</h1>
+                    <p class="mt-4 text-lg text-gray-700">Invalid activation link. Please check your email for the correct link.</p>
+                `;
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:8000/accounts/verify/${uid}/${token}/`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                const data = await response.json();
+
+                // Remove the loading message
+                loadingMessage.style.display = 'none';
+
+                if (response.ok) {
+                    messageContainer.innerHTML = `
+                        <h1 class="text-4xl font-bold text-green-500">Congratulations!</h1>
+                        <p class="mt-4 text-lg text-gray-700">Your account has been successfully activated.</p>
+                        <a href="login.html" class="mt-6 inline-block bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">Go to Login</a>
+                    `;
+                } else {
+                    messageContainer.innerHTML = `
+                        <h1 class="text-2xl font-bold text-red-500">Error</h1>
+                        <p class="mt-4 text-lg text-gray-700">${data.message || 'Invalid activation link. Please try again.'}</p>
+                    `;
+                }
+            } catch (error) {
+                loadingMessage.style.display = 'none';
+                messageContainer.innerHTML = `
+                    <h1 class="text-2xl font-bold text-red-500">Error</h1>
+                    <p class="mt-4 text-lg text-gray-700">Something went wrong. Please try again later.</p>
+                `;
+            }
+        }
+
+        activateAccount();
+    </script>
+</body>
+</html>
