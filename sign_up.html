@@ -98,11 +98,12 @@
 
                     <!-- Terms and Conditions -->
                     <div class="flex items-center">
-                        <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
-                        <label for="remember-me" class="ml-3 block text-sm text-gray-800">
+                        <input id="terms" name="terms" type="checkbox" required class="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
+                        <label for="terms" class="ml-3 block text-sm text-gray-800">
                             I accept the <a href="javascript:void(0);" class="text-blue-600 font-semibold hover:underline ml-1">Terms and Conditions</a>
                         </label>
                     </div>
+                    <span id="terms-error" class="text-red-500 text-sm error-message hidden"></span>
                 </div>
 
                 <!-- Submit Button -->

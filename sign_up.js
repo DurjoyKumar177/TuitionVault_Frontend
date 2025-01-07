@@ -7,6 +7,7 @@ const handleSignUp = (event) => {
     const email = getValue("email");
     const password = getValue("password");
     const conform_password = getValue("conform_password");
+    const terms = document.getElementById("terms").checked;
 
     const info = {
         username,
@@ -18,6 +19,11 @@ const handleSignUp = (event) => {
     };
 
     clearErrors();
+
+    if (!terms) {
+        showError("terms", "You must accept the Terms and Conditions.");
+        return;
+    }
 
     if (password !== conform_password) {
         showError("conform_password", "Password and confirm password do not match.");
