@@ -32,6 +32,7 @@ const handleSignUp = (event) => {
     fetch("http://127.0.0.1:8000/accounts/register/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify(info),
     })
         .then(async (res) => {

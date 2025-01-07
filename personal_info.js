@@ -1,28 +1,25 @@
-const handlePersonalInfo = (event) => {
-  event.preventDefault(); // Prevent the default form submission behavior
+const handlePersonalInfo = async (event) => {
+  event.preventDefault(); // Prevent default form submission behavior
 
-  // Collect form field values
-  const phone_number_1 = getValue("phone_number_1");
-  const phone_number_2 = getValue("phone_number_2");
-  const date_of_birth = getValue("date_of_birth");
-  const address = getValue("address");
-  const achieved_degree = getValue("achieved_degree");
-  const running_degree = getValue("running_degree");
-  const current_organization = getValue("current_organization");
-  const degree_certificate = getValue("degree_certificate");
-  const personal_photo = getValue("personal_photo");
+  // Collect form data
+  const formData = new FormData();
+  formData.append("phone_number_1", getValue("phone_number_1"));
+  formData.append("phone_number_2", getValue("phone_number_2"));
+  formData.append("date_of_birth", getValue("date_of_birth"));
+  formData.append("address", getValue("address"));
+  formData.append("achieved_degree", getValue("achieved_degree"));
+  formData.append("running_degree", getValue("running_degree"));
+  formData.append("current_organization", getValue("current_organization"));
 
-  const info = {
-    phone_number_1,
-    phone_number_2,
-    date_of_birth,
-    address,
-    achieved_degree,
-    running_degree,
-    current_organization,
-    degree_certificate,
-    personal_photo,
-  };
+  // Handle file uploads
+  const degreeCertificate = document.getElementById("degree_certificate").files[0];
+  const personalPhoto = document.getElementById("personal_photo").files[0];
+  if (degreeCertificate) {
+    formData.append("degree_certificate", degreeCertificate);
+  }
+  if (personalPhoto) {
+    formData.append("personal_photo", personalPhoto);
+  }
 
   // Reset any previous error messages
   clearErrors();
@@ -42,28 +39,29 @@ const handlePersonalInfo = (event) => {
   const csrfToken = getCSRFToken();
 
   // Make the API call to submit personal information
-  fetch("http://127.0.0.1:8000/accounts/personal-info/", {
-    method: "POST",
-    headers: {
-      "X-CSRFToken": csrfToken,
-      "Content-Type": "application/json",
-    },
-    credentials: "include", // Ensure cookies (like sessionid) are sent with the request
-  })
-    .then(async (res) => {
-      if (res.ok) {
-        window.location.href = "sign_up_successfull.html";
-      } else {
-        // Show error messages returned by the API
-        const errorData = await res.json();
-        handleErrorMessages(errorData);
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      document.getElementById("error").innerText =
-        "An unexpected error occurred. Please try again.";
+  try {
+    const response = await fetch("http://127.0.0.1:8000/accounts/personal-info/", {
+      method: "POST",
+      headers: {
+        "X-CSRFToken": csrfToken, // Include CSRF token
+      },
+      credentials: "include", // Ensure cookies are sent with the request
+      body: formData, // Use FormData for file uploads
     });
+
+    if (response.ok) {
+      // Redirect to success page
+      window.location.href = "sign_up_successfull.html";
+    } else {
+      // Show error messages from the API
+      const errorData = await response.json();
+      handleErrorMessages(errorData);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    document.getElementById("error").innerText =
+      "An unexpected error occurred. Please try again.";
+  }
 };
 
 // Helper function to get the value of an input field
@@ -71,52 +69,22 @@ const getValue = (id) => document.getElementById(id).value.trim();
 
 // Handle error messages returned by the backend
 const handleErrorMessages = (errorData) => {
-  if (errorData.phone_number_1) {
-    showError("phone_number_1", errorData.phone_number_1);
-  }
-
-  if (errorData.phone_number_2) {
-    showError("phone_number_2", errorData.phone_number_2);
-  }
-
-  if (errorData.date_of_birth) {
-    showError("date_of_birth", errorData.date_of_birth);
-  }
-
-  if (errorData.address) {
-    showError("address", errorData.address);
-  }
-
-  if (errorData.achieved_degree) {
-    showError("achieved_degree", errorData.achieved_degree);
-  }
-
-  if (errorData.running_degree) {
-    showError("running_degree", errorData.running_degree);
-  }
-
-  if (errorData.current_organization) {
-    showError("current_organization", errorData.current_organization);
-  }
-
-  if (errorData.degree_certificate) {
-    showError("degree_certificate", errorData.degree_certificate);
-  }
-
-  if (errorData.personal_photo) {
-    showError("personal_photo", errorData.personal_photo);
-  }
-
-  if (errorData.error) {
-    document.getElementById("error").innerText = errorData.error;
+  for (const [field, message] of Object.entries(errorData)) {
+    if (field !== "error") {
+      showError(field, message);
+    } else {
+      document.getElementById("error").innerText = message;
+    }
   }
 };
 
 // Show specific error messages for the fields
 const showError = (field, message) => {
   const errorElement = document.getElementById(`${field}-error`);
-  errorElement.classList.remove("hidden");
-  errorElement.innerText = message;
+  if (errorElement) {
+    errorElement.classList.remove("hidden");
+    errorElement.innerText = message;
+  }
 };
 
 // Clear all error messages
