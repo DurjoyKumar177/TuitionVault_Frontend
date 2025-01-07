@@ -15,7 +15,7 @@ const logoutUser = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user_id");
   
-        // Reload the page or redirect to the homepage
+        // Reload the page 
         window.location.reload(); 
       })
       .catch((error) => {

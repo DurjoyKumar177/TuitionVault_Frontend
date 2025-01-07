@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <p class="text-sm text-gray-600 mb-2"><strong>Subjects:</strong> ${post.subjects}</p>
         <p class="text-sm text-gray-600 mb-2"><strong>Location:</strong> ${post.location}</p>
         <p class="text-sm text-gray-600 mb-2"><strong>Monthly Payment:</strong> ৳${post.monthly_payment}</p>
-        <a href="${post.google_map_link}" target="_blank" class="inline-block text-blue-500 underline text-sm">View on Map</a>
+        <a href="${post.google_map_link || "https://www.google.com/maps/"}" target="_blank" class="inline-block text-blue-500 underline text-sm">View on Map</a>
         <a href="details.html?id=${post.id}" class="inline-block mt-4 bg-blue-500 text-white text-sm py-2 px-4 rounded hover:bg-blue-600">Details</a>
       </div>
     `;    

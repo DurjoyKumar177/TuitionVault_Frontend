@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const apiUrl = "http://127.0.0.1:8000/accounts/profile/update/";
 
-    // Get token from localStorage
     const authToken = localStorage.getItem("authToken");
 
     if (!authToken) {
@@ -42,11 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     };
 
-    // Submit form data to update profile
     updateProfileForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        // Gather form data
         const formData = {
             phone_number_1: document.getElementById("phone_number_1").value,
             phone_number_2: document.getElementById("phone_number_2").value,
@@ -83,6 +80,5 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     });
 
-    // Load existing profile data on page load
     loadProfileData();
 });

@@ -1,28 +1,21 @@
-// Function to get CSRF token from cookies
-const getCSRFToken = () => {
-    const cookies = document.cookie.split("; ");
-    for (const cookie of cookies) {
-        const [name, value] = cookie.split("=");
-        if (name === "csrftoken") {
-            return value;
-        }
-    }
-    return null;
-};
-
-// Fetch user history from the API
 const fetchUserHistory = async () => {
     const apiUrl = "http://127.0.0.1:8000/applications/history/";
-    const csrfToken = getCSRFToken();
+
+    const authToken = localStorage.getItem("authToken");
+
+    if (!authToken) {
+        alert("You are not logged in. Please log in to view your history.");
+        window.location.href = "login.html"; // Redirect to login page if no token is found
+        return;
+    }
 
     try {
         const response = await fetch(apiUrl, {
             method: "GET",
             headers: {
-                "X-CSRFToken": csrfToken,
+                "Authorization": `Token ${authToken}`, 
                 "Content-Type": "application/json",
             },
-            credentials: "include", // Include session cookies for authentication
         });
 
         if (!response.ok) {
@@ -32,6 +25,7 @@ const fetchUserHistory = async () => {
         const data = await response.json();
 
         const historyBody = document.getElementById("history-body");
+        historyBody.innerHTML = ""; // Clear any existing rows
 
         data.forEach(item => {
             const status = item.is_approved
