@@ -21,7 +21,7 @@ const handleLogin = (event) => {
 
             // Check if the response has the expected properties (token and user_id)
             if (data.token && data.user_id) {
-                localStorage.setItem("token", data.token);
+                localStorage.setItem("authToken", data.token);
                 localStorage.setItem("user_id", data.user_id);
                 window.location.href = "index.html";
             } 
