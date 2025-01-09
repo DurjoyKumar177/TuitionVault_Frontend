@@ -14,13 +14,13 @@ const userProfileIcon = document.getElementById("user-profile-icon");
 
 // Function to check if the user is authenticated by the token in localStorage
 function checkAuthStatus() {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("authToken");
   return !!token; 
 }
 
 // Function to fetch user profile image from the API
 async function fetchUserProfileImage() {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("authToken");
 
   if (!token) {
     userProfileIcon.src = "images/user.png";
