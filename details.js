@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(() => {
             alert("Successfully applied for the tuition!");
-            window.location.href = "my_applications.html";
+            window.location.href = "my_application.html";
         })
         .catch(error => {
             console.error("Error applying for tuition:", error);
