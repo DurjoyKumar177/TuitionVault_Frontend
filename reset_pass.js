@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/accounts/reset-password/${uid}/${token}/`,
+        `https://tuitionvault.onrender.com/accounts/reset-password/${uid}/${token}/`,
         {
           method: "POST",
           headers: {

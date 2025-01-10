@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const apiUrl = "http://127.0.0.1:8000/accounts/profile/update/";
+    const apiUrl = "https://tuitionvault.onrender.com/accounts/profile/update/";
 
     const authToken = localStorage.getItem("authToken");
 

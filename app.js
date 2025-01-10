@@ -28,7 +28,7 @@ async function fetchUserProfileImage() {
   }
 
   try {
-    const response = await fetch("http://127.0.0.1:8000/accounts/profile/", {
+    const response = await fetch("https://tuitionvault.onrender.com/accounts/profile/", {
       method: "GET",
       headers: {
         Authorization: `Token ${token}`,
@@ -41,7 +41,7 @@ async function fetchUserProfileImage() {
 
       if (data.personal_photo) {
         
-        const profileImageUrl = `http://127.0.0.1:8000/${data.personal_photo}`;
+        const profileImageUrl = `https://tuitionvault.onrender.com/${data.personal_photo}`;
         userProfileIcon.src = profileImageUrl;
       } else {
         console.warn("Profile image not found, using default placeholder.");

@@ -25,7 +25,7 @@ const handlePersonalInfo = async (event) => {
   clearErrors();
 
   try {
-    const response = await fetch("http://127.0.0.1:8000/accounts/personal-info/", {
+    const response = await fetch("https://tuitionvault.onrender.com/accounts/personal-info/", {
       method: "POST",
       credentials: "include", // Ensure cookies (session ID) are sent with the request
       body: formData, // Use FormData for file uploads

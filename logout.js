@@ -1,7 +1,7 @@
 const logoutUser = () => {
     const token = localStorage.getItem("token");
   
-    fetch("http://127.0.0.1:8000/accounts/logout/", {
+    fetch("https://tuitionvault.onrender.com/accounts/logout/", {
       method: "POST",
       headers: {
         Authorization: `Token ${token}`,

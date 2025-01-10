@@ -1,5 +1,5 @@
 const fetchUserHistory = async () => {
-    const apiUrl = "http://127.0.0.1:8000/applications/history/";
+    const apiUrl = "https://tuitionvault.onrender.com/applications/history/";
 
     const authToken = localStorage.getItem("authToken");
 

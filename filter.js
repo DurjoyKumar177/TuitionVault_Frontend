@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
   const apiEndpoints = {
-    classOptions: "http://127.0.0.1:8000/tutions/dropdown_options/class_name/",
-    locationOptions: "http://127.0.0.1:8000/tutions/dropdown_options/location/",
-    filterByClass: "http://127.0.0.1:8000/tutions/filter_by_class/",
-    filterByLocation: "http://127.0.0.1:8000/tutions/filter_by_location/",
-    searchByTitle: "http://127.0.0.1:8000/tutions/search_by_title/",
-    filterByPayment: "http://127.0.0.1:8000/tutions/filter_by_payment/",
+    classOptions: "https://tuitionvault.onrender.com/tutions/dropdown_options/class_name/",
+    locationOptions: "https://tuitionvault.onrender.com/tutions/dropdown_options/location/",
+    filterByClass: "https://tuitionvault.onrender.com/tutions/filter_by_class/",
+    filterByLocation: "https://tuitionvault.onrender.com/tutions/filter_by_location/",
+    searchByTitle: "https://tuitionvault.onrender.com/tutions/search_by_title/",
+    filterByPayment: "https://tuitionvault.onrender.com/tutions/filter_by_payment/",
   };
 
   const classFilter = document.getElementById("class-filter");
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const minPayment = salaryMin.value.trim();
     const maxPayment = salaryMax.value.trim();
 
-    let url = "http://127.0.0.1:8000/tutions/posts/";
+    let url = "https://tuitionvault.onrender.com/tutions/posts/";
 
     if (selectedClass) {
       url = `${apiEndpoints.filterByClass}?class_name=${selectedClass}`;
@@ -115,5 +115,5 @@ document.addEventListener("DOMContentLoaded", function () {
   populateDropdown(apiEndpoints.classOptions, classFilter);
   populateDropdown(apiEndpoints.locationOptions, locationFilter);
 
-  fetchAndDisplayCards("http://127.0.0.1:8000/tutions/posts/");
+  fetchAndDisplayCards("https://tuitionvault.onrender.com/tutions/posts/");
 });

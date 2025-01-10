@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const apiURL = "http://127.0.0.1:8000/applications/my-approved-tuitions/";
+    const apiURL = "https://tuitionvault.onrender.com/applications/my-approved-tuitions/";
     const cardContainer = document.getElementById("card-container");
 
     function createCard(post) {

@@ -10,7 +10,7 @@ const handleLogin = (event) => {
     console.log(username, password);
 
     if (username && password) {
-        fetch("http://127.0.0.1:8000/accounts/login/", {
+        fetch("https://tuitionvault.onrender.com/accounts/login/", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ username, password }),

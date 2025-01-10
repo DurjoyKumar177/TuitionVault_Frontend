@@ -52,7 +52,7 @@ document.querySelector("form").addEventListener("submit", async (event) => {
 
     // API call to change password
     try {
-        const response = await fetch("http://127.0.0.1:8000/accounts/change-password/", {
+        const response = await fetch("https://tuitionvault.onrender.com/accounts/change-password/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json", // Ensure it's JSON

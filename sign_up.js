@@ -35,7 +35,7 @@ const handleSignUp = (event) => {
         return;
     }
 
-    fetch("http://127.0.0.1:8000/accounts/register/", {
+    fetch("https://tuitionvault.onrender.com/accounts/register/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        fetch(`http://127.0.0.1:8000/reviews/give-review/${postId}/`, {
+        fetch(`https://tuitionvault.onrender.com/reviews/give-review/${postId}/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
