@@ -35,7 +35,7 @@
             }
 
             try {
-                const response = await fetch(`http://localhost:8000/accounts/verify/${uid}/${token}/`, {
+                const response = await fetch(`https://tuitionvault.onrender.com/accounts/verify/${uid}/${token}/`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
