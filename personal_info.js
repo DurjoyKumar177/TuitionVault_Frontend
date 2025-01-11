@@ -1,16 +1,15 @@
-const handlePersonalInfo = async (event) => {
-  event.preventDefault(); 
+const handlePersonalInfoSubmission = (event) => {
+  event.preventDefault();
 
-  const userId = localStorage.getItem("user_id");
+  const user_id = localStorage.getItem("user_id");
 
-  if (!userId) {
-    document.getElementById("error").innerText =
-      "User ID is missing. Please register again.";
-    return;
+  if (!user_id) {
+      document.getElementById("error").innerText = "User ID is missing. Please log in again.";
+      return;
   }
 
   const formData = new FormData();
-  formData.append("user_id", userId);
+  formData.append("user_id", user_id);
   formData.append("phone_number_1", getValue("phone_number_1"));
   formData.append("phone_number_2", getValue("phone_number_2"));
   formData.append("date_of_birth", getValue("date_of_birth"));
@@ -19,80 +18,67 @@ const handlePersonalInfo = async (event) => {
   formData.append("running_degree", getValue("running_degree"));
   formData.append("current_organization", getValue("current_organization"));
 
-  // Handle file uploads
   const degreeCertificate = document.getElementById("degree_certificate").files[0];
   const personalPhoto = document.getElementById("personal_photo").files[0];
+
   if (degreeCertificate) {
-    formData.append("degree_certificate", degreeCertificate);
-  }
-  if (personalPhoto) {
-    formData.append("personal_photo", personalPhoto);
+      formData.append("degree_certificate", degreeCertificate);
   }
 
-  // Reset any previous error messages
+  if (personalPhoto) {
+      formData.append("personal_photo", personalPhoto);
+  }
+
   clearErrors();
 
-  try {
-    const response = await fetch("https://tuitionvault.onrender.com/accounts/personal-info/", {
+  // Send data to the backend
+  fetch("https://tuitionvault.onrender.com/accounts/personal-info/", {
       method: "POST",
-      body: formData, // Send FormData as the body
-    });
+      body: formData,
+  })
+      .then(async (res) => {
+          if (res.ok) {
 
-    if (response.ok) {
-      // Redirect to the success page after successful personal information update
-      window.location.href = "sign_up_successfull.html";
-    } else if (response.status === 400) {
-      // Handle validation errors from the backend
-      const errorData = await response.json();
-      handleErrorMessages(errorData);
-    } else if (response.status === 404) {
-      // Handle user not found case
-      const errorData = await response.json();
-      document.getElementById("error").innerText =
-        errorData.message || "User not found.";
-    } else {
-      throw new Error("Unexpected response from the server.");
-    }
-  } catch (error) {
-    console.error("Error:", error);
-    document.getElementById("error").innerText =
-      "An unexpected error occurred. Please try again.";
-  }
+              window.location.href = "sign_up_successfull.html";
+          } else {
+              // Handle validation errors from the backend
+              const errorData = await res.json();
+              Object.keys(errorData).forEach((key) => {
+                  showError(key, errorData[key]);
+              });
+          }
+      })
+      .catch((error) => {
+          // Handle unexpected errors
+          console.error("Error:", error);
+          document.getElementById("error").innerText = "An unexpected error occurred. Please try again.";
+          alert("An unexpected error occurred. Please try again.");
+      });
 };
 
-// Helper function to get the value of an input field
-const getValue = (id) => document.getElementById(id).value.trim();
+// Helper function to get input values
+const getValue = (id) => document.getElementById(id)?.value.trim();
 
-// Handle error messages returned by the backend
-const handleErrorMessages = (errorData) => {
-  for (const [field, messages] of Object.entries(errorData)) {
-    if (field !== "message") {
-      showError(field, messages.join(", ")); // Display specific field errors
-    } else {
-      document.getElementById("error").innerText = messages; // Display generic error messages
-    }
-  }
-};
-
-// Show specific error messages for the fields
+// Helper function to show error messages
 const showError = (field, message) => {
-  const errorElement = document.getElementById(`${field}-error`);
+  const errorElement = document.querySelector(`[data-error="${field}"]`);
   if (errorElement) {
-    errorElement.classList.remove("hidden");
-    errorElement.innerText = message;
+      errorElement.innerText = message;
+  } else {
+      console.warn(`No error element found for field: ${field}`);
   }
 };
 
-// Clear all error messages
+// Helper function to clear all error messages
 const clearErrors = () => {
-  const errorElements = document.querySelectorAll(".error-message");
+  const errorElements = document.querySelectorAll("[data-error]");
   errorElements.forEach((errorElement) => {
-    errorElement.classList.add("hidden");
-    errorElement.innerText = "";
+      errorElement.innerText = "";
   });
 };
 
-// Add event listener to the form
-document
-  .getElementById("personalInfoForm")
-  .addEventListener("submit", handlePersonalInfo);
+const form = document.getElementById("personalInfoForm");
+if (form) {
+  form.addEventListener("submit", handlePersonalInfoSubmission);
+}
+
