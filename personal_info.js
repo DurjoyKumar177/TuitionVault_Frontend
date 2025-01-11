@@ -1,8 +1,16 @@
 const handlePersonalInfo = async (event) => {
-  event.preventDefault(); // Prevent default form submission behavior
+  event.preventDefault(); 
 
-  // Collect form data
+  const userId = localStorage.getItem("user_id");
+
+  if (!userId) {
+    document.getElementById("error").innerText =
+      "User ID is missing. Please register again.";
+    return;
+  }
+
   const formData = new FormData();
+  formData.append("user_id", userId);
   formData.append("phone_number_1", getValue("phone_number_1"));
   formData.append("phone_number_2", getValue("phone_number_2"));
   formData.append("date_of_birth", getValue("date_of_birth"));
@@ -27,17 +35,23 @@ const handlePersonalInfo = async (event) => {
   try {
     const response = await fetch("https://tuitionvault.onrender.com/accounts/personal-info/", {
       method: "POST",
-      credentials: "include", // Ensure cookies (session ID) are sent with the request
-      body: formData, // Use FormData for file uploads
+      body: formData, // Send FormData as the body
     });
 
     if (response.ok) {
-      // Redirect to success page
+      // Redirect to the success page after successful personal information update
       window.location.href = "sign_up_successfull.html";
-    } else {
-      // Show error messages from the API
+    } else if (response.status === 400) {
+      // Handle validation errors from the backend
       const errorData = await response.json();
       handleErrorMessages(errorData);
+    } else if (response.status === 404) {
+      // Handle user not found case
+      const errorData = await response.json();
+      document.getElementById("error").innerText =
+        errorData.message || "User not found.";
+    } else {
+      throw new Error("Unexpected response from the server.");
     }
   } catch (error) {
     console.error("Error:", error);
@@ -51,11 +65,11 @@ const getValue = (id) => document.getElementById(id).value.trim();
 
 // Handle error messages returned by the backend
 const handleErrorMessages = (errorData) => {
-  for (const [field, message] of Object.entries(errorData)) {
-    if (field !== "error") {
-      showError(field, message);
+  for (const [field, messages] of Object.entries(errorData)) {
+    if (field !== "message") {
+      showError(field, messages.join(", ")); // Display specific field errors
     } else {
-      document.getElementById("error").innerText = message;
+      document.getElementById("error").innerText = messages; // Display generic error messages
     }
   }
 };
