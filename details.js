@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => {
             if (!response.ok) {
                 return response.json().then(data => {
-                    alert(data.error || "An error occurred. Please try again.");
+                    alert("You need to login to apply for the tuition. Please login first.");
                     throw new Error(data.error || "Error applying for tuition");
                 });
             }
