@@ -75,10 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             `}
 
-            <div class="bg-gray-800 text-white py-4 text-center">
-                <p class="text-sm">Created at: ${post.created_at}</p>
-                <p class="text-sm">Last updated: ${post.updated_at}</p>
-            </div>
         `;
 
         if (post.availability) {

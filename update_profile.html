@@ -10,6 +10,78 @@
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
 <body class="bg-gradient-to-r from-blue-200 via-blue-50 to-blue-200">
+
+    <header>
+        <nav class="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 shadow-lg">
+          <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+              
+              <!-- Logo and Name on the Left -->
+              <div class="flex items-center space-x-2">
+                <a href="index.html">
+                  <img class="h-8 w-8 rounded-full" src="images/logo.webp" alt="logo">
+                </a>
+                <a href="index.html" class="text-lg font-bold text-white">TuitionVault</a>
+              </div>
+      
+              <!-- Navigation Links -->
+              <div class="flex space-x-4">
+                <a href="tuitions.html" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100">
+                  Job Board
+                </a>
+                <a id="my-tuition" href="my_tuition.html" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden">
+                  My Tuition
+                </a>
+                <a id="my-applications" href="my_application.html" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden">
+                  My Applications
+                </a>
+              </div>
+      
+              <!-- Right Section: Auth Buttons, Bell, and Profile -->
+              <div class="flex items-center space-x-4">
+                <!-- Auth Buttons -->
+                <div id="auth-buttons" class="flex items-center space-x-4">
+                  <a href="login.html" class="z-10 rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100">
+                    Login
+                  </a>
+                  <a href="sign_up.html" class="z-10 rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100">
+                    Register
+                  </a>
+                </div>
+      
+                <!-- Notification Bell -->
+                <div class="relative">
+                  <button id="notification-bell" class="text-white hover:text-gray-200 focus:outline-none focus:ring-0">
+                    <span class="sr-only">View notifications</span>
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 7.165 7 8.477 7 10v4.159c0 .538-.214 1.055-.595 1.436L5 17h5m5 0a3.001 3.001 0 11-6 0m6 0H9"></path>
+                    </svg>
+                  </button>
+                  <div id="notification-message" class="absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md bg-white py-2 px-4 shadow-lg ring-1 ring-black/5 hidden">
+                    <p class="text-sm text-gray-700">The notification feature is not available yet. We are working on it. It will be available soon.</p>
+                  </div>
+                </div>
+      
+                <!-- User Dropdown -->
+                <div class="relative ml-3">
+                  <button type="button" id="profile-toggle" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 hover:ring-2 hover:ring-gray-500">
+                    <span class="sr-only">Open user menu</span>
+                    <img id="user-profile-icon" class="h-8 w-8 rounded-full hover:ring-2 hover:ring-blue-600" src="images/user.png" alt="User Icon">
+                  </button>
+                  <div id="profile-menu" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 hidden">
+                    <a href="profile.html" id="profile-option" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">Your Profile</a>
+                    <a href="history.html" id="history-option" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">History</a>
+                    <a href="#" onclick="logoutUser()" id="signout-option" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">Sign out</a>
+                    <p id="unauth-message" class="px-4 py-2 text-sm text-gray-700">Login to access your account</p>
+                    <a href="login.html" id="login-button" class="block px-4 py-2 text-sm text-blue-600 hover:underline">Login</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
 <section class="py-1 bg-blueGray-50">
     <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
         <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
@@ -109,6 +181,28 @@
         </div>
     </div>
 </section>
+
+<footer class="fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
+    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="#" class="hover:underline">TuitionVault™</a>. All Rights Reserved.
+    </span>
+    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+        <li>
+            <a href="#" class="hover:underline me-4 md:me-6">About</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline">Contact</a>
+        </li>
+    </ul>
+</footer>
+
+<script src="app.js"></script>
+<script src="logout.js"></script>
 <script src="update_profile.js"></script>
 </body>
 </html>
