@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuitionVault</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-r from-blue-200 via-blue-50 to-blue-200">
+  <header>
+    <nav class="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 shadow-lg">
+      <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div class="relative flex h-16 items-center justify-between">
+          <!-- Logo Section -->
+          <div class="flex items-center space-x-2">
+            <a href="index.html">
+              <img class="h-8 w-8 rounded-full" src="images/logo.webp" alt="logo">
+            </a>
+            <a href="index.html" class="text-lg font-bold text-white">TuitionVault</a>
+          </div>
+            <!-- Navigation Links -->
+              <div class="flex space-x-4">
+                <a href="tuitions.html" class="rounded-md bg-blue-500 px-3 py-2 text-sm font-medium text-white " aria-current="page">
+                  Dashboard
+                </a>
+                <a id="my-tuition" href="my_tuition.html" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden">
+                  My Tuition
+                </a>
+                <a id="my-applications" href="my_application.html" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden">
+                  My Applications
+                </a>
+              </div>
+
+  
+          <!-- Right Section: Auth Buttons, Bell, and Profile -->
+          <div class="flex items-center space-x-4">
+            <!-- Auth Buttons -->
+            <div id="auth-buttons" class="flex items-center space-x-4">
+              <a href="login.html" class="z-10 rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100">
+                Login
+              </a>
+              <a href="sign_up.html" class="z-10 rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100">
+                Register
+              </a>
+            </div>
+  
+            <!-- Notification Bell -->
+            <div class="relative">
+              <button id="notification-bell" class="text-white hover:text-gray-200 focus:outline-none focus:ring-0">
+                <span class="sr-only">View notifications</span>
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 7.165 7 8.477 7 10v4.159c0 .538-.214 1.055-.595 1.436L5 17h5m5 0a3.001 3.001 0 11-6 0m6 0H9"></path>
+                </svg>
+              </button>
+              <div id="notification-message" class="absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md bg-white py-2 px-4 shadow-lg ring-1 ring-black/5 hidden">
+                <p class="text-sm text-gray-700">The notification feature is not available yet. We are working on it. It will be available soon.</p>
+              </div>
+            </div>
+  
+            <!-- User Dropdown -->
+            <div class="relative ml-3">
+              <button type="button" id="profile-toggle" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 hover:ring-2 hover:ring-gray-500">
+                <span class="sr-only">Open user menu</span>
+                <img id="user-profile-icon" class="h-8 w-8 rounded-full hover:ring-2 hover:ring-blue-600" src="images/user.png" alt="User Icon">
+              </button>
+              <div id="profile-menu" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 hidden">
+                <a href="profile.html" id="profile-option" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">Your Profile</a>
+                <a href="history.html" id="history-option" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">History</a>
+                <a href="#" onclick="logoutUser()" id="signout-option" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">Sign out</a>
+                <p id="unauth-message" class="px-4 py-2 text-sm text-gray-700">Login to access your account</p>
+                <a href="login.html" id="login-button" class="block px-4 py-2 text-sm text-blue-600 hover:underline">Login</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+<main>
+  <div class="relative">
+    <!-- Filter Section -->
+    <div class="flex flex-wrap justify-around items-center bg-gray-100 p-4 shadow-md rounded-lg mb-6">
+      <!-- Filter by Class -->
+      <div class="relative ">
+        <select id="class-filter" class="appearance-none block w-48 bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded-lg shadow-sm leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          <option value="">Filter by Class</option>
+        </select>
+        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+          <svg class="w-4 h-4 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Filter by Location -->
+      <div class="relative">
+        <select id="location-filter" class="appearance-none block w-48 bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded-lg shadow-sm leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          <option value="">Filter by Location</option>
+        </select>
+        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+          <svg class="w-4 h-4 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Search by Title -->
+      <div class="relative w-1/3">
+        <input id="title-search" type="text" placeholder="Search by Title" class="block w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+      </div>
+
+      <!-- Filter by Monthly Payment -->
+      <div class="flex flex-col items-center space-y-2">
+        <h6 class="text-base font-semibold text-gray-700 mt-0">Filter by Payment</h6>
+        <div class="flex items-center space-x-4">
+          <input id="salary-min" type="number" placeholder="Min Payment" class="block w-24 bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+          <input id="salary-max" type="number" placeholder="Max Payment" class="block w-24 bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+          <button id="salary-button" class="bg-blue-500 text-white text-sm py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Apply</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto p-4">
+      <!-- Grid to display 3 cards in a row -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="card-container">
+        <!-- Cards will be dynamically generated here -->
+      </div>
+
+      <div id="details-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-2/3">
+            <button id="modal-close" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+                &times;
+            </button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+    </div>
+  </div>
+  <br><br>
+</main>
+
+<br>
+<br>
+<footer class="fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
+    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="#" class="hover:underline">TuitionVault™</a>. All Rights Reserved.
+    </span>
+    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+        <li>
+            <a href="#" class="hover:underline me-4 md:me-6">About</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline">Contact</a>
+        </li>
+    </ul>
+</footer>
+
+<script src="app.js"></script>
+<script src="logout.js"></script>
+<script src="filter.js"></script>
+</body>
+</html>

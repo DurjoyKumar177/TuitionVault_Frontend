@@ -1,164 +1,824 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TuitionVault</title>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<header>
-    <nav class="bg-gray-800">
+    <link rel="shortcut icon" href="./images/bg1.webp" type="image/x-icon">
+    <title>TuitionsVault</title>
+      <link rel="stylesheet" href="index_style.css">
+      <link rel="stylesheet" href="style.css">
+
+  </head>
+  <body class="bg-gradient-to-r from-blue-200 via-blue-50 to-blue-200">
+
+
+    <header>
+      <nav class="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 shadow-lg">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div class="relative flex h-16 items-center justify-between">
-                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                    <div class="flex shrink-0 items-center">
-                        <img class="h-8 w-8 rounded-full" src="images/logo.webp" alt="logo">
-                        <a href="index.html" class="ml-2 text-lg font-bold text-white">
-                            TuitionVault
-                        </a>
-                    </div>
-                    <div class="hidden sm:ml-6 sm:block">
-                        <div class="flex space-x-4">
-                            <a href="index.html" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Dashboard</a>
-                            <!-- Conditional Buttons -->
-                            <a id="my-tuition" href="my_tuition.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white hidden">My Tuition</a>
-                            <a id="my-applications" href="my_application.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white hidden">My Applications</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <!-- Login and Register Buttons -->
-                    <div id="auth-buttons" class="flex items-center space-x-4">
-                        <a href="login.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Login</a>
-                        <a href="sign_up.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Register</a>
-                    </div>
-                    <!-- Notification Bell -->
-                    <div class="relative">
-                        <button id="notification-bell" class="relative text-gray-400 hover:text-white focus:outline-none focus:ring-0">
-                            <span class="sr-only">View notifications</span>
-                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 7.165 7 8.477 7 10v4.159c0 .538-.214 1.055-.595 1.436L5 17h5m5 0a3.001 3.001 0 11-6 0m6 0H9"></path>
-                            </svg>
-                        </button>
-                        <div id="notification-message" class="absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md bg-white py-2 px-4 shadow-lg ring-1 ring-black/5 hidden">
-                            <p class="text-sm text-gray-700">
-                                The notification feature is not available yet. We are working on it. It will be available soon.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- User Dropdown -->
-                    <div class="relative ml-3">
-                      <div>
-                        <button type="button" id="profile-toggle" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                          <span class="sr-only">Open user menu</span>
-                          <img id="user-profile-icon" class="h-8 w-8 rounded-full" src="images/user.png" alt="User Icon">
-                        </button>
-                      </div>
-                        <div id="profile-menu" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none hidden" role="menu" aria-orientation="vertical" aria-labelledby="profile-toggle">
-                            <!-- Conditionally Rendered -->
-                            <a href="profile.html" id="profile-option" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">Your Profile</a>
-                            <a href="history.html" id="history-option" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">History</a>
-                            <a href="#" onclick="logoutUser()" id ="signout-option" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</a>
-                            <!-- Unauthorized Message -->
-                            <p id="unauth-message" class="px-4 py-2 text-sm text-gray-700">Login to access your account</p>
-                            <a href="login.html" id="login-button" class="block px-4 py-2 text-sm text-blue-600 hover:underline">Login</a>
-                        </div>
-                    </div>
-                </div>
+          <div class="relative flex h-16 items-center justify-between">
+            
+            <!-- Logo and Name on the Left -->
+            <div class="flex items-center space-x-2">
+              <a href="index.html">
+                <img class="h-8 w-8 rounded-full" src="images/logo.webp" alt="logo">
+              </a>
+              <a href="index.html" class="text-lg font-bold text-white">TuitionVault</a>
             </div>
+    
+            <!-- Navigation Links -->
+            <div class="flex space-x-4">
+              <a href="tuitions.html" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100">
+                Dashboard
+              </a>
+              <a id="my-tuition" href="my_tuition.html" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden">
+                My Tuition
+              </a>
+              <a id="my-applications" href="my_application.html" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden">
+                My Applications
+              </a>
+            </div>
+    
+            <!-- Right Section: Auth Buttons, Bell, and Profile -->
+            <div class="flex items-center space-x-4">
+              <!-- Auth Buttons -->
+              <div id="auth-buttons" class="flex items-center space-x-4">
+                <a href="login.html" class="z-10 rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100">
+                  Login
+                </a>
+                <a href="sign_up.html" class="z-10 rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100">
+                  Register
+                </a>
+              </div>
+    
+              <!-- Notification Bell -->
+              <div class="relative">
+                <button id="notification-bell" class="text-white hover:text-gray-200 focus:outline-none focus:ring-0">
+                  <span class="sr-only">View notifications</span>
+                  <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 7.165 7 8.477 7 10v4.159c0 .538-.214 1.055-.595 1.436L5 17h5m5 0a3.001 3.001 0 11-6 0m6 0H9"></path>
+                  </svg>
+                </button>
+                <div id="notification-message" class="absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md bg-white py-2 px-4 shadow-lg ring-1 ring-black/5 hidden">
+                  <p class="text-sm text-gray-700">The notification feature is not available yet. We are working on it. It will be available soon.</p>
+                </div>
+              </div>
+    
+              <!-- User Dropdown -->
+              <div class="relative ml-3">
+                <button type="button" id="profile-toggle" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 hover:ring-2 hover:ring-gray-500">
+                  <span class="sr-only">Open user menu</span>
+                  <img id="user-profile-icon" class="h-8 w-8 rounded-full hover:ring-2 hover:ring-blue-600" src="images/user.png" alt="User Icon">
+                </button>
+                <div id="profile-menu" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 hidden">
+                  <a href="profile.html" id="profile-option" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">Your Profile</a>
+                  <a href="history.html" id="history-option" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">History</a>
+                  <a href="#" onclick="logoutUser()" id="signout-option" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">Sign out</a>
+                  <p id="unauth-message" class="px-4 py-2 text-sm text-gray-700">Login to access your account</p>
+                  <a href="login.html" id="login-button" class="block px-4 py-2 text-sm text-blue-600 hover:underline">Login</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </nav>
-</header>
+      </nav>
+    </header>
+    
+    
+    
 
-<main>
-  <div class="relative">
-    <!-- Filter Section -->
-    <div class="flex flex-wrap justify-around items-center bg-gray-100 p-4 shadow-md rounded-lg mb-6">
-      <!-- Filter by Class -->
-      <div class="relative ">
-        <select id="class-filter" class="appearance-none block w-48 bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded-lg shadow-sm leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-          <option value="">Filter by Class</option>
-        </select>
-        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-          <svg class="w-4 h-4 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
+    <main>
+    <!-- banner Section -->
+    <section
+      class="banner min-h-screen pt-10">
+      <div class="flex">
+        <div class="w-1/2 p-10">
+          <!-- Left Section -->
+          <div class="text-center lg:text-left">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-blue-600 text-2xl"
+                ><i class="ph-bold ph-book-open"></i
+              ></span>
+              <h5 class="text-blue-600 text-xl font-medium">
+                Find the Right Tuition in Your Area
+              </h5>
+            </div>
+            <h1 class="text-4xl lg:text-5xl font-bold mb-4">
+              Best Tutoring Platform for Home &amp;
+              <span class="text-orange-500">Online</span> Tuitions
+            </h1>
+            <p class="text-gray-600 text-lg mb-6">
+              Find the Perfect Tuition Near You: Enhance Learning with Expert
+              Guidance and Personalized Support Today!
+            </p>
+
+            <div class="flex flex-wrap gap-4 mb-6">
+              <a
+                href="register.html"
+                class="px-6 py-3 bg-blue-600 text-white rounded-full shadow hover:bg-blue-700">
+                Register Now<i class="ph-bold ph-arrow-up-right ml-2"></i>
+              </a>
+              <a
+                href="#"
+                class="px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-full shadow hover:bg-blue-100">
+                Apply for Tuition <i class="ph-bold ph-arrow-up-right ml-2"></i>
+              </a>
+            </div>
+
+            <div class="flex items-center flex-wrap gap-4">
+              <h6 class="text-lg font-medium">Location for Tuitions :</h6>
+              <div class="grid grid-cols-3 gap-4">
+                <span class="py-2 px-6 bg-white rounded-full shadow-md text-sm hover:scale-110 transition duration-300 ease-in-out"
+                  >Narayangonj : <span class="text-orange-500">96</span></span
+                >
+                <span class="py-2 px-6 bg-white rounded-full shadow-md text-sm hover:scale-110 transition duration-300 ease-in-out"
+                  >Dhanmondi: <span class="text-orange-500">176</span></span
+                >
+                <span class="py-2 px-6 bg-white rounded-full shadow-md text-sm hover:scale-110 transition duration-300 ease-in-out"
+                  >Gulshan : <span class="text-orange-500">64</span></span
+                >                
+                <span class="py-2 px-6 bg-white rounded-full shadow-md text-sm hover:scale-110 transition duration-300 ease-in-out"
+                  >Mirpur : <span class="text-orange-500">86</span></span
+                >
+                <span class="py-2 px-6 bg-white rounded-full shadow-md text-sm hover:scale-110 transition duration-300 ease-in-out"
+                  >Mohammadpur : <span class="text-orange-500">95</span></span
+                >
+                <span class="py-2 px-6 bg-white rounded-full shadow-md text-sm hover:scale-110 transition duration-300 ease-in-out"
+                  >Banani: <span class="text-orange-500">78</span></span
+                >
+                <span class="py-2 px-6 bg-white rounded-full shadow-md text-sm hover:scale-110 transition duration-300 ease-in-out"
+                  >Comilla: <span class="text-orange-500">87</span></span
+                >
+                <span class="py-2 px-6 bg-white rounded-full shadow-md text-sm hover:scale-110 transition duration-300 ease-in-out"
+                  >Sylhet: <span class="text-orange-500">127</span></span
+                >
+                <span class="py-2 px-6 bg-white rounded-full shadow-md text-sm hover:scale-110 transition duration-300 ease-in-out"
+                  >Borishal: <span class="text-orange-500">75</span></span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex gap-6">
+          <div>
+
+            <div
+              class="card card-side bg-base-100 shadow-xl w-56 absolute ml-64 mt-6 floating-card">
+              <figure>
+                <img  class="h-10 w-15" src="./resource/job1.png" alt="" />
+              </figure>
+              <div class="card-body p-3">
+                <p>Available Tuitions</p>
+                <h2 class="card-title">1520+</h2>
+              </div>
+            </div>
+
+            <div class="static hover:scale-110 transition duration-300">
+              <img class="h-96" src="./resource/banner-four-img1.png" alt="" />
+            </div>
+          </div>
+          <div class="mt-44">
+            <div class="absolute hover:scale-110 transition duration-300">
+              <img class="h-96" src="./resource/banner-four-img2.png" alt="" />
+            </div>
+
+            <div class="absolute mt-64 -ml-40">
+              <div
+                class="card card-side bg-base-100 shadow-xl w-56 floating-card">
+                <figure>
+                  <img class="h-10 w-15" src="./resource/active_job2.png" alt="" />
+                </figure>
+                <div class="card-body p-3">
+                  <p>Active Tuitions</p>
+                  <h2 class="card-title">1000+</h2>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- application and job count cards -->
+     <section class="count px-14 mt-10">
+    <div class="max-w-7xl  mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Card 1 -->
+      <div
+        class="bg-white p-6 rounded-lg shadow-md flex items-center gap-4"
+      >
+        <div
+          class="bg-green-500 text-white rounded-full flex items-center justify-center w-16 h-16"
+        >
+          <img src="./images/user2.png" alt="Registered Tutors" class="w-8 h-8" />
+        </div>
+        <div>
+          <span class="text-3xl font-bold text-gray-800 counter" data-target="1924">0</span>
+          <p class="text-gray-600">Registered Tutors</p>
         </div>
       </div>
 
-      <!-- Filter by Location -->
-      <div class="relative">
-        <select id="location-filter" class="appearance-none block w-48 bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded-lg shadow-sm leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-          <option value="">Filter by Location</option>
-        </select>
-        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-          <svg class="w-4 h-4 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
+      <!-- Card 2 -->
+      <div
+        class="bg-white p-6 rounded-lg shadow-md flex items-center gap-4"
+      >
+        <div
+          class="bg-green-500 text-white rounded-full flex items-center justify-center w-16 h-16"
+        >
+          <img src="./images/application.png" alt="Total Applications" class="w-8 h-8" />
+        </div>
+        <div>
+          <span class="text-3xl font-bold text-gray-800 counter" data-target="2865">0</span>
+          <p class="text-gray-600">Total Applications</p>
         </div>
       </div>
 
-      <!-- Search by Title -->
-      <div class="relative w-1/3">
-        <input id="title-search" type="text" placeholder="Search by Title" class="block w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+      <!-- Card 3 -->
+      <div
+        class="bg-white p-6 rounded-lg shadow-md flex items-center gap-4"
+      >
+        <div
+          class="bg-green-500 text-white rounded-full flex items-center justify-center w-16 h-16"
+        >
+          <img src="./images/active_job.png" alt="Live Tuition Jobs" class="w-8 h-8" />
+        </div>
+        <div>
+          <span class="text-3xl font-bold text-gray-800 counter" data-target="1015">0</span>
+          <p class="text-gray-600">Live Tuition Jobs</p>
+        </div>
       </div>
 
-      <!-- Filter by Monthly Payment -->
-      <div class="flex flex-col items-center space-y-2">
-        <h6 class="text-base font-semibold text-gray-700 mt-0">Filter by Payment</h6>
-        <div class="flex items-center space-x-4">
-          <input id="salary-min" type="number" placeholder="Min Payment" class="block w-24 bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
-          <input id="salary-max" type="number" placeholder="Max Payment" class="block w-24 bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
-          <button id="salary-button" class="bg-blue-500 text-white text-sm py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Apply</button>
+      <!-- Card 4 -->
+      <div
+        class="bg-white p-6 rounded-lg shadow-md flex items-center gap-4"
+      >
+        <div
+          class="bg-green-500 text-white rounded-full flex items-center justify-center w-16 h-16"
+        >
+          <img src="./images/sum.png" alt="Total Stakeholders" class="w-8 h-8" />
+        </div>
+        <div>
+          <span class="text-3xl font-bold text-gray-800 counter" data-target="2640">0</span>
+          <p class="text-gray-600">Total Stakeholders</p>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Main Content -->
-    <div class="container mx-auto p-4">
-      <!-- Grid to display 3 cards in a row -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="card-container">
-        <!-- Cards will be dynamically generated here -->
+  <!-- Went to be tuitor banner -->
+   <section class="tuitor_banner mt-10">
+    <div class="max-w-6xl mx-auto mt-32 bg-white rounded-lg shadow-lg border border-blue-200 p-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-blue-200">
+        <!-- Left Section -->
+        <div class="flex flex-col items-center md:items-start text-center md:text-left px-6 py-4">
+          <p class="text-xl font-semibold text-gray-800">Want to Become</p>
+          <p class="text-5xl font-extrabold text-blue-600 mt-2">TUTOR</p>
+          <p class="text-sm text-gray-500 mt-2">Empower students and unlock your potential.</p>
+        </div>
+
+        <!-- Middle Section -->
+        <div class="flex flex-col justify-center items-center px-6 py-4">
+          <h5 class="text-2xl font-bold text-gray-800 mb-2">Be a Master</h5>
+          <h5 class="text-xl font-medium text-gray-600">to grow faster</h5>
+          <p class="text-sm text-gray-500 mt-3">Join a network of passionate educators and level up your skills.</p>
+        </div>
+
+        <!-- Right Section -->
+        <div class="flex flex-col justify-center items-center md:items-start px-6 py-4">
+          <a
+            href="tuitions.html"
+            class="bg-green-500 text-white text-lg font-medium px-8 py-3 rounded-full hover:bg-green-600 transition"
+          >
+            Find  Now
+          </a>
+          <p class="text-sm text-gray-500 mt-3">
+            Start your journey today. It’s free and only takes a few minutes!
+          </p>
+        </div>
+      </div>
+    </div>
+   </section>
+
+   <!-- steps sections -->
+    <section class="steps mt-10 px-14">
+      <div class="py-10">
+        <div class="container mx-auto font-sans text-center">
+          <h1 class="text-2xl font-semibold text-gray-800 mb-8 text-center">
+            The ways <span class="text-green-500">Teachers/Students</span> can connect with us.
+          </h1>
+          <div class="flex flex-wrap lg:flex-nowrap justify-center items-center gap-8 relative">
+            <!-- Step 1 -->
+            <div class="w-60">
+              <img
+                class="mx-auto mb-4"
+                src="./images/step1.svg"
+                alt="Create Profile Icon"
+              />
+              <p class="text-xl font-medium text-gray-800">Create Profile</p>
+              <p class="text-gray-600 text-sm mt-2">
+                Create a profile to get more learning benefits from our website.
+              </p>
+            </div>
+    
+            <!-- Arrow Between Step 1 and Step 2 -->
+            <img
+              class="hidden lg:block w-12 h-12"
+              src="./images/arrow.png"
+              alt="Arrow"
+            />
+    
+            <!-- Step 2 -->
+            <div class="w-60">
+              <img
+                class="mx-auto mb-4"
+                src="./images/step3.svg"
+                alt="Submit Requirements Icon"
+              />
+              <p class="text-xl font-medium text-gray-800">Submit Requirements</p>
+              <p class="text-gray-600 text-sm mt-2">
+                Fill up expected tutor requirements & submit the request.
+              </p>
+            </div>
+    
+            <!-- Arrow Between Step 2 and Step 3 -->
+            <img
+              class="hidden lg:block w-12 h-12"
+              src="./images/arrow.png"
+              alt="Arrow"
+            />
+    
+            <!-- Step 3 -->
+            <div class="w-60">
+              <img
+                class="mx-auto mb-4"
+                src="./images/step2.svg"
+                alt="Get Tutors' CV Icon"
+              />
+              <p class="text-xl font-medium text-gray-800">Apply for Tuitions</p>
+              <p class="text-gray-600 text-sm mt-2">
+                Based on tuitions requirements, we will select the best tutors among the all applicants.
+              </p>
+            </div>
+    
+            <!-- Arrow Between Step 3 and Step 4 -->
+            <img
+              class="hidden lg:block w-12 h-12"
+              src="./images/arrow.png"
+              alt="Arrow"
+            />
+    
+            <!-- Step 4 -->
+            <div class="w-60">
+              <img
+                class="mx-auto mb-4"
+                src="./images/step4.svg"
+                alt="Select Tutor Icon"
+              />
+              <p class="text-xl font-medium text-gray-800">Start Tuitions</p>
+              <p class="text-gray-600 text-sm mt-2">
+                After the selection process,if you are selected you can start your tuitions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- about us -->
+    <section class="about-us mt-10">
+      <div class="max-w-7xl mx-auto py-12 border-b border-solid border-gray-300 flex flex-col md:flex-row items-center space-x-8">
+        <!-- Text Section -->
+        <div class="w-2/3 px-8 text-center md:text-center space-y-6">
+            <h2 class="text-2xl font-semibold text-gray-800">ABOUT US</h2>
+            <p class="text-gray-600 leading-relaxed">We Delta Tutors, situated at Malad West, Mumbai, Maharashtra focus on providing personal tutors who inspire and motivate kids to determine and achieve the passions of their life. We provide personalized, customized, and consistent development programs for your child that will bring out the best in her/him and make them leaders of tomorrow. Every advancement of your child is tracked and measured.</p>
+        </div>
+    
+        <!-- Image Section -->
+        <div class="w-2/3">
+            <!-- Replace with your actual image source -->
+            <img src="images/bg1.webp" alt="" class="rounded-lg shadow-lg w-full max-w-md object-cover h-200"/>
+        </div> 
+    </div>
+    </section>
+
+    <!-- why us -->
+    <section class="relative h-fit mt-10 flex justify-center pt-20 pb-20 m-20">
+      <!-- Background Image -->
+      <div class="absolute inset-0 bg-[url('./resource/bg3.jpg')] bg-cover bg-center opacity-20 rounded-xl"></div>
+    
+      <div class="relative mt-90">
+        <h2 class="text-center text-4xl font-bold mb-8">Why us</h2>
+        <div class="flex w-full gap-16">
+          <!-- Left Column -->
+          <div class="space-y-12">
+            <!-- Card 1 -->
+            <div class="card card-side bg-base-100 shadow-xl w-[400px] h-56">
+              <figure class="flex items-center p-4">
+                <img class="h-16 w-16 flex-shrink-0" src="./images/connection.png" alt="Connection Icon" />
+              </figure>
+              <div class="flex-1 p-6 flex flex-col justify-between">
+                <h2 class="card-title">Empowering Students and Tutors</h2>
+                <p>Connecting students and tutors for tailored learning experiences through a user-friendly online platform.</p>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card card-side bg-base-100 shadow-xl w-[400px] h-56">
+              <figure class="flex items-center p-4">
+                <img class="h-16 w-16 flex-shrink-0" src="./images/task_com.png" alt="Tasks Icon" />
+              </figure>
+              <div class="flex-1 p-6 flex flex-col justify-between">
+                <h2 class="card-title">Efficient Administration</h2>
+                <p>Admins can easily add, edit, and delete tuition listings while managing applicants, ensuring an up-to-date and user-friendly system.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Right Column -->
+          <div class="space-y-12">
+            <!-- Card 3 -->
+            <div class="card card-side bg-base-100 shadow-xl w-[400px] h-56">
+              <figure class="flex items-center p-4">
+                <img class="h-16 w-16 flex-shrink-0" src="./images/sequrity.webp" alt="Security Icon" />
+              </figure>
+              <div class="flex-1 p-6 flex flex-col justify-between">
+                <h2 class="card-title">Secure and User-Friendly</h2>
+                <p>Robust registration with email verification ensures account security. Users can manage profiles, track applications, and filter tuition by class.</p>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card card-side bg-base-100 shadow-xl w-[400px] h-56">
+              <figure class="flex items-center p-4">
+                <img class="h-16 w-16 flex-shrink-0" src="./images/gearGreen.png" alt="Tech Icon" />
+              </figure>
+              <div class="flex-1 p-6 flex flex-col justify-between">
+                <h2 class="card-title">Tech-Driven Learning</h2>
+                <p>Utilizing technology to save time, enhance accessibility, and provide a reliable platform for students and admins in education management.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+
+
+<!-- Tutorial -->
+<section class="tutorial px-8">
+  <div class="max-w-7xl mx-auto py-12 flex flex-col items-center">
+    <h2 class="text-2xl font-semibold text-gray-800 text-center mb-8">Tutorial</h2>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+      <!-- Video 1 -->
+      <div class="flex flex-col items-center">
+        <iframe
+          class="rounded-lg shadow-md"
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/drrgM8OUkFI"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <p class="mt-4 text-center text-gray-600 font-medium">Online Teaching with Nidhi</p>
       </div>
 
-      <div id="details-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-2/3">
-            <button id="modal-close" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
-                &times;
-            </button>
-            <div id="modal-content"></div>
-        </div>
-    </div>
+      <!-- Video 2 -->
+      <div class="flex flex-col items-center">
+        <iframe
+          class="rounded-lg shadow-md"
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/BJEuV21oI2E"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <p class="mt-4 text-center text-gray-600 font-medium">Adarsha Shikshak - Teaching Practice</p>
+      </div>
     </div>
   </div>
-  <br><br>
+</section>
+
+
+<!-- User review section -->
+ <section class="review mt-10 px-14">
+  
+  <div class="container mx-auto">
+    <h1 class="text-3xl font-bold text-center mb-10">What Our Users Say</h1>
+
+    <!-- Carousel Container -->
+    <div class="overflow-hidden  rounded-lg mx-auto">
+      <!-- Carousel Track -->
+      <div class="flex animate-scroll gap-4">
+        <!-- Individual Review Cards -->
+        <div class="flex-shrink-0 w-72 p-4 bg-white border border-gray-200 shadow-md rounded-lg">
+          <img src="./resource/p1.png" alt="User 1" class="w-14 h-14 rounded-full shadow-md mx-auto mb-4">
+          <h3 class="text-lg font-semibold text-center">Prem Shankar</h3>
+          <p class="text-gray-600 mt-2 text-sm break-words text-center">The tutors here are well qualified. I'll surely refer them to others.this is the best place to learn</p>
+        </div>
+
+        <div class="flex-shrink-0 w-72 p-4 bg-white border border-gray-200 shadow-md rounded-lg">
+          <img src="./resource/bg2.jpeg" alt="User 2" class="w-14 h-14 rounded-full shadow-md mx-auto mb-4">
+          <h3 class="text-lg font-semibold text-center">Samina Kapasi</h3>
+          <p class="text-gray-600 mt-2 text-sm break-words text-center">My child studies here. The tutors here are excellent.</p>
+        </div>
+
+        <div class="flex-shrink-0 w-72 p-4 bg-white border border-gray-200 shadow-md rounded-lg">
+          <img src="./resource/p3.jpg" alt="User 3" class="w-14 h-14 rounded-full shadow-md mx-auto mb-4">
+          <h3 class="text-lg font-semibold text-center">Rahul Sharma</h3>
+          <p class="text-gray-600 mt-2 text-sm break-words text-center">The teaching methods are innovative and engaging.</p>
+        </div>
+
+        <div class="flex-shrink-0 w-72 p-4 bg-white border border-gray-200 shadow-md rounded-lg">
+          <img src="./resource/p4.avif" alt="User 4" class="w-14 h-14 rounded-full shadow-md mx-auto mb-4">
+          <h3 class="text-lg font-semibold text-center">Sophia Lee</h3>
+          <p class="text-gray-600 mt-2 text-sm break-words text-center">My experience here has been fantastic! Highly recommended.</p>
+        </div>
+
+        <div class="flex-shrink-0 w-72 p-4 bg-white border border-gray-200 shadow-md rounded-lg">
+          <img src="./resource/p5.webp" alt="User 5" class="w-14 h-14 rounded-full shadow-md mx-auto mb-4">
+          <h3 class="text-lg font-semibold text-center">Arjun Patel</h3>
+          <p class="text-gray-600 mt-2 text-sm break-words text-center">Great environment for learning. I love it here.</p>
+        </div>
+
+        <div class="flex-shrink-0 w-72 p-4 bg-white border border-gray-200 shadow-md rounded-lg">
+          <img src="./resource/p6.webp" alt="User 6" class="w-14 h-14 rounded-full shadow-md mx-auto mb-4">
+          <h3 class="text-lg font-semibold text-center">Emily Davis</h3>
+          <p class="text-gray-600 mt-2 text-sm break-words text-center">The faculty is highly skilled and supportive.</p>
+        </div>
+
+        <div class="flex-shrink-0 w-72 p-4 bg-white border border-gray-200 shadow-md rounded-lg">
+          <img src="./resource/p7.jpeg" alt="User 7" class="w-14 h-14 rounded-full shadow-md mx-auto mb-4">
+          <h3 class="text-lg font-semibold text-center">Mohammed Khan</h3>
+          <p class="text-gray-600 mt-2 text-sm break-words text-center">I appreciate the personalized attention given to each student.</p>
+        </div>
+
+        <div class="flex-shrink-0 w-72 p-4 bg-white border border-gray-200 shadow-md rounded-lg">
+          <img src="./resource/p9.jpg" alt="User 8" class="w-14 h-14 rounded-full shadow-md mx-auto mb-4">
+          <h3 class="text-lg font-semibold text-center">Neha Gupta</h3>
+          <p class="text-gray-600 mt-2 text-sm break-words text-center">The program here has been incredibly helpful for my studies. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+ </section>
+
+
+<!-- FAQ section -->
+ <section class="FAQ mt-20">
+  <div class="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
+    <h2 class="text-3xl font-extrabold mb-6 text-center text-blue-600">
+      Frequently Asked Questions
+    </h2>
+    <div class="space-y-6">
+      <!-- Question 1 -->
+      <div class="border-b border-gray-200">
+        <button
+          class="faq-toggle w-full flex justify-between items-center py-1 text-lg font-bold text-gray-700 hover:text-blue-600"
+        >
+          <span>What is the purpose of this platform?</span>
+          <span class="faq-icon text-blue-500 text-2xl font-bold">+</span>
+        </button>
+        <p class="hidden text-gray-600 pl-4 pb-4">
+          This platform connects students with experienced tutors for live
+          classes and personalized learning experiences.
+        </p>
+      </div>
+      <!-- Question 2 -->
+      <div class="border-b border-gray-200">
+        <button
+          class="faq-toggle w-full flex justify-between items-center py-1 text-lg font-bold text-gray-700 hover:text-blue-600"
+        >
+          <span>How do I become a tutor?</span>
+          <span class="faq-icon text-blue-500 text-2xl font-bold">+</span>
+        </button>
+        <p class="hidden text-gray-600 pl-4 pb-4">
+          To become a tutor, simply sign up, complete your profile, and upload
+          your qualifications. Our team will review and approve your
+          application.
+        </p>
+      </div>
+      <!-- Question 3 -->
+      <div class="border-b border-gray-200">
+        <button
+          class="faq-toggle w-full flex justify-between items-center py-1 text-lg font-bold text-gray-700 hover:text-blue-600"
+        >
+          <span>Are there any fees to use this platform?</span>
+          <span class="faq-icon text-blue-500 text-2xl font-bold">+</span>
+        </button>
+        <p class="hidden text-gray-600 pl-4 pb-4">
+          No, registration is free for both tutors and students. However, a
+          small commission is deducted for each completed session.
+        </p>
+      </div>
+      <!-- Question 4 -->
+      <div class="border-b border-gray-200">
+        <button
+          class="faq-toggle w-full flex justify-between items-center py-1 text-lg font-bold text-gray-700 hover:text-blue-600"
+        >
+          <span>Can I schedule classes at my convenience?</span>
+          <span class="faq-icon text-blue-500 text-2xl font-bold">+</span>
+        </button>
+        <p class="hidden text-gray-600 pl-4 pb-4">
+          Yes, tutors and students can coordinate and schedule classes based
+          on their availability.
+        </p>
+      </div>
+      <!-- Question 5 -->
+      <div class="border-b border-gray-200">
+        <button
+          class="faq-toggle w-full flex justify-between items-center py-1 text-lg font-bold text-gray-700 hover:text-blue-600"
+        >
+          <span>How can I contact support?</span>
+          <span class="faq-icon text-blue-500 text-2xl font-bold">+</span>
+        </button>
+        <p class="hidden text-gray-600 pl-4 pb-4">
+          You can reach our support team via email or live chat, available on
+          the website, for any issues or queries.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Contuct Us -->
+ <section class="contact_us mt-20">
+    <!-- Contact Us Heading -->
+    <h1 class="text-4xl font-semibold text-center mb-8">Contact Us</h1>
+
+    <!-- Contact Form Section -->
+    <!-- <div class="mx-auto w-full bg-white shadow-lg max-w-4xl rounded-lg p-6 border-2 border-orange-500"> -->
+    <div class="mx-auto w-full bg-white shadow-lg max-w-4xl rounded-lg p-6">
+        <form action="#" method="POST" class="space-y-6">
+            <!-- Flex Row for Inputs -->
+            <div class="flex flex-col md:flex-row gap-6">
+                <!-- Left Column -->
+                <div class="flex-1 space-y-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-100 text-gray-800 placeholder-gray-500"
+                            placeholder="Enter your full name"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label for="mobile" class="block text-sm font-medium text-gray-700">Mobile Number</label>
+                        <input
+                            type="tel"
+                            id="mobile"
+                            name="mobile"
+                            class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-100 text-gray-800 placeholder-gray-500"
+                            placeholder="Enter your mobile number"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email ID</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-100 text-gray-800 placeholder-gray-500"
+                            placeholder="Enter your email address"
+                            required
+                        />
+                    </div>
+                </div>
+    
+                <!-- Right Column -->
+                <div class="flex-1">
+                    <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="8"
+                        class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-800 bg-gray-100 placeholder-gray-500"
+                        placeholder="Write your message here"
+                        required
+                    ></textarea>
+                </div>
+            </div>
+    
+            <!-- Submit Button -->
+            <div class="flex justify-center">
+                <button
+                    type="submit"
+                    class="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                >
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    <br><br>
+    
+      <!-- Map and Location Details -->
+      <div class="mx-auto flex flex-col md:flex-row items-start justify-between mt-10 gap-8 w-full max-w-6xl">
+        <!-- Map -->
+        <div class="w-full md:w-1/2 h-80 rounded-lg overflow-hidden shadow-md">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3155.825633924577!2d144.95839307611295!3d-37.816635078594455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675218ce840!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1613955409010!5m2!1sen!2sus"
+              class="w-full h-full"
+              frameborder="0"
+              allowfullscreen=""
+              aria-hidden="false"
+              tabindex="0"
+            ></iframe>
+          </div>
+    
+        <!-- Location Details -->
+        <div class="w-full md:w-1/2 bg-white shadow-md rounded-lg p-6">
+          <div class="mb-4">
+            <div class="flex items-center">
+              <img src="./images/location.png" class="w-6 h-6 mr-2" alt="Location">
+              <h2 class="text-lg font-medium text-gray-900">Our Office Address</h2>
+            </div>
+            <p class="text-gray-600">
+            Addhayon Accadimic Care, Level 4, House 39, Road 27, Dhanmondi R/A, Dhaka 1209, Bangladesh
+            </p>
+          </div>
+          <div class="mb-4">
+            <div class="flex items-center">
+              <img src="./images/mail.png" class="w-6 h-6 mr-2" alt="Enquiry">
+              <h2 class="text-lg font-medium text-gray-900">General Enquiries</h2>
+            </div>
+            <p class="text-gray-600">websupport@tuitionvault.com</p>
+          </div>
+          <div class="mb-4">
+            <div class="flex items-center">
+              <img src="./images/phone.png" class="w-6 h-6 mr-2" alt="Call">
+              <h2 class="text-lg font-medium text-gray-900">Call Us</h2>
+            </div>
+            <p class="text-gray-600">+8801521738141</p>
+          </div>
+          <div class="mb-4">
+            <div class="flex items-center">
+              <img src="./images/time.png" class="w-6 h-6 mr-2" alt="Call">
+            <h2 class="text-lg font-medium text-gray-900">Our Timing</h2>
+          </div>
+            <p class="text-gray-600">Mon - Sun : 10:00 AM - 07:00 PM</p>         
+          </div>
+        </div>
+      </div>
+      <br><br>
+ </section>
+
 </main>
 
-<br>
-<br>
-<footer class="fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
-    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="#" class="hover:underline">TuitionVault™</a>. All Rights Reserved.
-    </span>
-    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-        <li>
-            <a href="#" class="hover:underline me-4 md:me-6">About</a>
-        </li>
-        <li>
-            <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
-        </li>
-        <li>
-            <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
-        </li>
-        <li>
-            <a href="#" class="hover:underline">Contact</a>
-        </li>
-    </ul>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white pt-5 mt-10 pb-3">
+  <div class="container max-w-7xl mx-auto flex flex-wrap justify-center">
+      <div class="w-full md:w-1/2 lg:w-1/4 px-4 md:px-6 lg:px-8">
+          <h5 class="text-xl font-semibold">Get In Touch</h5>
+          <p class="mt-4">Dit amet consectetur. Condimentum adipiscing aliquam turpis placerat dolor. Purus urna in sit nullam proin.</p>
+          <p class="mt-4"><i class="fas fa-envelope mr-2"></i> hockeys@support.com</p>
+          <p class="mt-4"><i class="fas fa-phone mr-2"></i> (+88) 0173-3219-543</p>
+      </div>
+      <div class="w-full md:w-1/2 lg:w-1/4 px-4 md:px-6 lg:px-8">
+          <h5 class="text-xl font-semibold">Company</h5>
+          <ul class="mt-4 list-none">
+              <li class="mt-2"><a href="#" class="text-light hover:text-blue-500">About us</a></li>
+              <li class="mt-2"><a href="#" class="text-light hover:text-blue-500">Leadership</a></li>
+              <li class="mt-2"><a href="#" class="text-light hover:text-blue-500">Careers</a></li>
+              <li class="mt-2"><a href="#" class="text-light hover:text-blue-500">News & Article</a></li>
+              <li class="mt-2"><a href="#" class="text-light hover:text-blue-500">Legal Notice</a></li>
+          </ul>
+      </div>
+      <div class="w-full md:w-1/2 lg:w-1/4 px-4 md:px-6 lg:px-8">
+          <h5 class="text-xl font-semibold">Support</h5>
+          <ul class="mt-4 list-none">
+              <li class="mt-2"><a href="#" class="text-light hover:text-blue-500">Help Center</a></li>
+              <li class="mt-2"><a href="#" class="text-light hover:text-blue-500">FAQ</a></li>
+              <li class="mt-2"><a href="#" class="text-light hover:text-blue-500">Ticket Support</a></li>
+              <li class="mt-2"><a href="#" class="text-light hover:text-blue-500">Contact Us</a></li>
+          </ul>
+      </div>
+      <div class="w-full md:w-1/2 lg:w-1/4 px-4 md:px-6 lg:px-8">
+          <h5 class="text-xl font-semibold">Services</h5>
+          <ul class="mt-4 list-none">
+              <li class="mt-2"><a href="#" class="text-light hover:text-blue-500">Academy</a></li>
+              <li class="mt-2"><a href="#" class="text-light hover:text-blue-500">Group Lesson</a></li>
+              <li class="mt-2"><a href="#" class="text-light hover:text-blue-500">Private Lesson</a></li>
+              <li class="mt-2"><a href="#" class="text-light hover:text-blue-500">Hockeys for kids</a></li>
+              <li class="mt-2"><a href="#" class="text-light hover:text-blue-500">Hockeys for Adult</a></li>
+          </ul>
+      </div>
+  </div>
 </footer>
 
-<script src="app.js"></script>
-<script src="logout.js"></script>
-<script src="filter.js"></script>
-</body>
+
+    <script src="app.js"></script>
+    <script src="index_app.js"></script>
+    <script src="logout.js"></script>
+  </body>
 </html>

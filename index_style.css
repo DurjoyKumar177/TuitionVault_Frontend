@@ -1,0 +1,22 @@
+      /* Floating animation */
+      @keyframes floating {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+      
+      .floating-card {
+        animation: floating 5s infinite ease-in-out;
+      }      
+      
+    /* Animation in counting */
+    
+      /* Animation styles for numbers */
+      @keyframes countUp {
+        from {
+          content: "0";
+        }
+      }
