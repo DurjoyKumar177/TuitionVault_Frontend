@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         cardContainer.innerHTML = "";
         if (data.length === 0) {
           const noDataImage = document.createElement("img");
-          noDataImage.src = "/images/noDataFound.jpg";
+          noDataImage.src = "/resource/noDataFound.jpg";
           noDataImage.alt = "No Data Found";
           noDataImage.className = "w-1/5 h-auto mx-auto";           
           cardContainer.className = "flex justify-center items-center ";
