@@ -6,6 +6,57 @@ document.addEventListener("DOMContentLoaded", function () {
         return urlParams.get("id");
     }
 
+    function showAlert(message, type = "success") {
+        // Remove any existing alerts
+        const existingAlert = document.querySelector(".sticky-alert");
+        if (existingAlert) existingAlert.remove();
+    
+        // Create the alert element
+        const alertDiv = document.createElement("div");
+        alertDiv.setAttribute("role", "alert");
+    
+        // Common classes
+        alertDiv.classList.add(
+            "sticky-alert",
+            "fixed", "top-4", "left-1/2", "-translate-x-1/2",
+            "z-50", "shadow-lg", "max-w-md", "w-full", 
+            "transition-opacity", "duration-500", "text-white", "px-4", "py-3", "rounded-lg", "flex", "items-center", "gap-2"
+        );
+    
+        // Apply background color based on type
+        if (type === "success") {
+            alertDiv.classList.add("bg-green-600");
+        } else {
+            alertDiv.classList.add("bg-red-600");
+        }
+    
+        // Alert icon
+        const iconSvg = type === "success" ? `
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        ` : `
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        `;
+    
+        alertDiv.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+                ${iconSvg}
+            </svg>
+            <span>${message}</span>
+        `;
+    
+        // Append the alert to the body
+        document.body.appendChild(alertDiv);
+    
+        // Automatically remove the alert after 5 seconds
+        setTimeout(() => {
+            alertDiv.classList.add("opacity-0"); // Fade out
+            setTimeout(() => {
+                alertDiv.remove(); // Remove from DOM
+            }, 500); // Wait for fade-out animation
+        }, 3000);
+    }
+    
+
     function populateDetails(post) {
         const googleMapsEmbedURL = `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${encodeURIComponent(post.location)}`;
 
@@ -63,8 +114,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             ${post.availability ? `
                 <div class="p-6 text-center">
-                    <button id="apply-button" class="w-full md:w-auto px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                        Apply for this Tuition
+                    <button id="apply-button" class="w-full md:w-auto px-6 py-3 ${localStorage.getItem("authToken") ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-400 cursor-not-allowed"} text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                        ${localStorage.getItem("authToken") ? "Apply for this Tuition" : "Please Login to Apply"}
                     </button>
                 </div>
             ` : `
@@ -78,9 +129,16 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
 
         if (post.availability) {
-            document.getElementById("apply-button").addEventListener("click", () => {
-                applyForTuition(post.id);
-            });
+            const applyButton = document.getElementById("apply-button");
+            if (localStorage.getItem("authToken")) {
+                applyButton.addEventListener("click", () => {
+                    applyForTuition(post.id);
+                });
+            } else {
+                applyButton.addEventListener("click", () => {
+                    showAlert("Please login to apply for this tuition.", "error");
+                });
+            }
         } else {
             document.getElementById("review-button").addEventListener("click", () => {
                 window.location.href = `review.html?id=${post.id}`;
@@ -147,15 +205,20 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => {
             if (!response.ok) {
                 return response.json().then(data => {
-                    alert("You need to login to apply for the tuition. Please login first.");
+                    // Show backend error message
+                    showAlert(data.error || "You have already applied for this tuition.", "error");
                     throw new Error(data.error || "Error applying for tuition");
                 });
             }
             return response.json();
         })
         .then(() => {
-            alert("Successfully applied for the tuition!");
-            window.location.href = "my_application.html";
+            // Show success message
+            showAlert("Successfully applied for the tuition!", "success");
+            // Redirect after 2 seconds
+            setTimeout(() => {
+                window.location.href = "my_application.html";
+            }, 2000);
         })
         .catch(error => {
             console.error("Error applying for tuition:", error);
