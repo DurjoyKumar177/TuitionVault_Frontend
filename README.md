@@ -67,51 +67,12 @@ TuitionsVault is a **Django DRF-based web application** designed to help **unive
 
 ### 1️⃣ Clone the Repository
 ```bash
- git clone https://github.com/your-username/TuitionsVault.git
- cd TuitionsVault
+git clone https://github.com/DurjoyKumar177/TuitionVault_Frontend.git
+cd TuitionVault_Frontend
 ```
 
-### 2️⃣ Create a Virtual Environment
-```bash
-python -m venv venv
-source venv/bin/activate   # On macOS/Linux
-venv\Scripts\activate     # On Windows
-```
-
-### 3️⃣ Install Dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 4️⃣ Apply Migrations
-```bash
-python manage.py migrate
-```
-
-### 5️⃣ Create Superuser (For Admin Panel)
-```bash
-python manage.py createsuperuser
-```
-
-### 6️⃣ Run Development Server
-```bash
-python manage.py runserver
-```
-Access the application at: **http://127.0.0.1:8000/**
-
----
-
-## 📬 API Endpoints (Example)
-| Method | Endpoint               | Description                     |
-|--------|------------------------|---------------------------------|
-| POST   | `/api/register/`        | Register a new user            |
-| POST   | `/api/login/`           | Authenticate user               |
-| POST   | `/api/forgot-password/` | Reset password                  |
-| GET    | `/api/tuitions/`        | Retrieve all tuition posts      |
-| POST   | `/api/apply/`           | Apply for a tuition             |
-| GET    | `/api/my-tuitions/`     | Get user’s active tuitions      |
-| GET    | `/api/history/`         | View application history        |
-| POST   | `/api/review/`          | Submit a tuition review         |
+### 2️⃣ Open the Project in Live Server
+Use the **Live Server** extension in VS Code or any other preferred method to run the project in your browser.
 
 ---
 
