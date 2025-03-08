@@ -6,87 +6,175 @@
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css"
       rel="stylesheet"
-      type="text/css" />
+      type="text/css"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="shortcut icon" href="./images/bg1.webp" type="image/x-icon">
+    <link rel="shortcut icon" href="./images/bg1.webp" type="image/x-icon" />
     <title>TuitionsVault</title>
-      <link rel="stylesheet" href="index_style.css">
-      <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="index_style.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body class="bg-gradient-to-r from-blue-200 via-blue-50 to-blue-200">
-
-
     <header class="sticky top-0 z-50">
-      <nav class="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 shadow-lg">
+      <nav
+        class="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 shadow-lg"
+      >
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div class="relative flex h-16 items-center justify-between">
-            
             <!-- Logo and Name on the Left -->
             <div class="flex items-center space-x-2">
               <a href="index.html">
-                <img class="h-8 w-8 rounded-full" src="images/logo.webp" alt="logo">
+                <img
+                  class="h-8 w-8 rounded-full"
+                  src="images/logo.webp"
+                  alt="logo"
+                />
               </a>
-              <a href="index.html" class="text-lg font-bold text-white">TuitionVault</a>
+              <a href="index.html" class="text-lg font-bold text-white"
+                >TuitionVault</a
+              >
             </div>
-    
+
             <!-- Navigation Links -->
             <div class="flex space-x-4">
-                <a href="index.html" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100">
-                    Home
-                  </a>
-              <a href="tuitions.html" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100">
+              <a
+                href="index.html"
+                class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100"
+              >
+                Home
+              </a>
+              <a
+                href="tuitions.html"
+                class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100"
+              >
                 Job Board
               </a>
-              <a id="my-tuition" href="my_tuition.html" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden">
+              <a
+                id="my-tuition"
+                href="my_tuition.html"
+                class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden"
+              >
                 My Tuition
               </a>
-              <a id="my-applications" href="my_application.html" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden">
+              <a
+                id="my-applications"
+                href="my_application.html"
+                class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden"
+              >
                 My Applications
               </a>
 
-              <a href="contuct_us.html" class="rounded-md bg-blue-500 px-3 py-2 text-sm font-medium text-white " aria-current="page">
+              <a
+                href="contuct_us.html"
+                class="rounded-md bg-blue-500 px-3 py-2 text-sm font-medium text-white"
+                aria-current="page"
+              >
                 Contact us
               </a>
             </div>
-    
+
             <!-- Right Section: Auth Buttons, Bell, and Profile -->
             <div class="flex items-center space-x-4">
               <!-- Auth Buttons -->
               <div id="auth-buttons" class="flex items-center space-x-4">
-                <a href="login.html" class="z-10 rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100">
+                <a
+                  href="login.html"
+                  class="z-10 rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100"
+                >
                   Login
                 </a>
-                <a href="sign_up.html" class="z-10 rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100">
+                <a
+                  href="sign_up.html"
+                  class="z-10 rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100"
+                >
                   Register
                 </a>
               </div>
-    
+
               <!-- Notification Bell -->
               <div class="relative">
-                <button id="notification-bell" class="text-white hover:text-gray-200 focus:outline-none focus:ring-0">
+                <button
+                  id="notification-bell"
+                  class="text-white hover:text-gray-200 focus:outline-none focus:ring-0"
+                >
                   <span class="sr-only">View notifications</span>
-                  <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 7.165 7 8.477 7 10v4.159c0 .538-.214 1.055-.595 1.436L5 17h5m5 0a3.001 3.001 0 11-6 0m6 0H9"></path>
+                  <svg
+                    class="h-6 w-6"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 7.165 7 8.477 7 10v4.159c0 .538-.214 1.055-.595 1.436L5 17h5m5 0a3.001 3.001 0 11-6 0m6 0H9"
+                    ></path>
                   </svg>
                 </button>
-                <div id="notification-message" class="absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md bg-white py-2 px-4 shadow-lg ring-1 ring-black/5 hidden">
-                  <p class="text-sm text-gray-700">The notification feature is not available yet. We are working on it. It will be available soon.</p>
+                <div
+                  id="notification-message"
+                  class="absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md bg-white py-2 px-4 shadow-lg ring-1 ring-black/5 hidden"
+                >
+                  <p class="text-sm text-gray-700">
+                    The notification feature is not available yet. We are
+                    working on it. It will be available soon.
+                  </p>
                 </div>
               </div>
-    
+
               <!-- User Dropdown -->
               <div class="relative ml-3">
-                <button type="button" id="profile-toggle" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 hover:ring-2 hover:ring-gray-500">
+                <button
+                  type="button"
+                  id="profile-toggle"
+                  class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 hover:ring-2 hover:ring-gray-500"
+                >
                   <span class="sr-only">Open user menu</span>
-                  <img id="user-profile-icon" class="h-8 w-8 rounded-full hover:ring-2 hover:ring-blue-600" src="images/user.png" alt="User Icon">
+                  <img
+                    id="user-profile-icon"
+                    class="h-8 w-8 rounded-full hover:ring-2 hover:ring-blue-600"
+                    src="images/user.png"
+                    alt="User Icon"
+                  />
                 </button>
-                <div id="profile-menu" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 hidden">
-                  <a href="profile.html" id="profile-option" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">Your Profile</a>
-                  <a href="history.html" id="history-option" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">History</a>
-                  <a href="#" onclick="logoutUser()" id="signout-option" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">Sign out</a>
-                  <p id="unauth-message" class="px-4 py-2 text-sm text-gray-700">Login to access your account</p>
-                  <a href="login.html" id="login-button" class="block px-4 py-2 text-sm text-blue-600 hover:underline">Login</a>
+                <div
+                  id="profile-menu"
+                  class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 hidden"
+                >
+                  <a
+                    href="profile.html"
+                    id="profile-option"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden"
+                    >Your Profile</a
+                  >
+                  <a
+                    href="history.html"
+                    id="history-option"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden"
+                    >History</a
+                  >
+                  <a
+                    href="#"
+                    onclick="logoutUser()"
+                    id="signout-option"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden"
+                    >Sign out</a
+                  >
+                  <p
+                    id="unauth-message"
+                    class="px-4 py-2 text-sm text-gray-700"
+                  >
+                    Login to access your account
+                  </p>
+                  <a
+                    href="login.html"
+                    id="login-button"
+                    class="block px-4 py-2 text-sm text-blue-600 hover:underline"
+                    >Login</a
+                  >
                 </div>
               </div>
             </div>
@@ -94,120 +182,141 @@
         </div>
       </nav>
     </header>
-    
-  <main>
-    
 
-<!-- Contuct Us -->
-<section class="contact_us mt-20">
-    <!-- Contact Us Heading -->
-    <h1 class="text-4xl font-semibold text-center mb-8">Contact Us</h1>
+    <main>
+      <!-- Contuct Us -->
+      <section class="contact_us mt-20">
+        <!-- Contact Us Heading -->
+        <h1 class="text-4xl font-semibold text-center mb-8">Contact Us</h1>
 
-    <!-- Contact Form Section -->
-<!-- Contact Form Section -->
-<div class="mx-auto w-full bg-white shadow-lg max-w-4xl rounded-lg p-6">
-  <form id="contact-form" action="#" method="POST" class="space-y-6">
-    <!-- Flex Row for Inputs -->
-    <div class="flex flex-col md:flex-row gap-6">
-      <!-- Left Column -->
-      <div class="flex-1 space-y-4">
-        <div>
-          <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-100 text-gray-800 placeholder-gray-500"
-            placeholder="Enter your full name"
-            required
-          />
+        <!-- Contact Form Section -->
+        <!-- Contact Form Section -->
+        <div class="mx-auto w-full bg-white shadow-lg max-w-4xl rounded-lg p-6">
+          <form id="contact-form" action="#" method="POST" class="space-y-6">
+            <!-- Flex Row for Inputs -->
+            <div class="flex flex-col md:flex-row gap-6">
+              <!-- Left Column -->
+              <div class="flex-1 space-y-4">
+                <div>
+                  <label
+                    for="name"
+                    class="block text-sm font-medium text-gray-700"
+                    >Full Name</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-100 text-gray-800 placeholder-gray-500"
+                    placeholder="Enter your full name"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    for="mobile"
+                    class="block text-sm font-medium text-gray-700"
+                    >Mobile Number</label
+                  >
+                  <input
+                    type="tel"
+                    id="mobile"
+                    name="mobile"
+                    class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-100 text-gray-800 placeholder-gray-500"
+                    placeholder="Enter your mobile number"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-medium text-gray-700"
+                    >Email ID</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-100 text-gray-800 placeholder-gray-500"
+                    placeholder="Enter your email address"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Right Column -->
+              <div class="flex-1">
+                <label
+                  for="message"
+                  class="block text-sm font-medium text-gray-700"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="8"
+                  class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-800 bg-gray-100 placeholder-gray-500"
+                  placeholder="Write your message here"
+                  required
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex justify-center">
+              <button
+                type="submit"
+                class="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
-        <div>
-          <label for="mobile" class="block text-sm font-medium text-gray-700">Mobile Number</label>
-          <input
-            type="tel"
-            id="mobile"
-            name="mobile"
-            class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-100 text-gray-800 placeholder-gray-500"
-            placeholder="Enter your mobile number"
-            required
-          />
+
+        <!-- Daisy UI Modal for Success Message -->
+        <div id="success-modal" class="modal">
+          <div class="modal-box">
+            <h3 class="font-bold text-lg">Success!</h3>
+            <p class="py-4">
+              Your message has been successfully submitted! Thank you for
+              reaching out.
+            </p>
+            <div class="modal-action">
+              <button id="close-modal" class="btn btn-primary">Close</button>
+            </div>
+          </div>
         </div>
-        <div>
-          <label for="email" class="block text-sm font-medium text-gray-700">Email ID</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-100 text-gray-800 placeholder-gray-500"
-            placeholder="Enter your email address"
-            required
-          />
-        </div>
-      </div>
 
-      <!-- Right Column -->
-      <div class="flex-1">
-        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-        <textarea
-          id="message"
-          name="message"
-          rows="8"
-          class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-800 bg-gray-100 placeholder-gray-500"
-          placeholder="Write your message here"
-          required
-        ></textarea>
-      </div>
-    </div>
+        <!-- JavaScript for Modal -->
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("contact-form");
+            const successModal = document.getElementById("success-modal");
+            const closeModal = document.getElementById("close-modal");
 
-    <!-- Submit Button -->
-    <div class="flex justify-center">
-      <button
-        type="submit"
-        class="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-      >
-        Submit
-      </button>
-    </div>
-  </form>
-</div>
+            form.addEventListener("submit", (event) => {
+              event.preventDefault();
+              successModal.classList.add("modal-open");
+              form.reset();
+            });
 
-<!-- Daisy UI Modal for Success Message -->
-<div id="success-modal" class="modal">
-  <div class="modal-box">
-    <h3 class="font-bold text-lg">Success!</h3>
-    <p class="py-4">Your message has been successfully submitted! Thank you for reaching out.</p>
-    <div class="modal-action">
-      <button id="close-modal" class="btn btn-primary">Close</button>
-    </div>
-  </div>
-</div>
+            closeModal.addEventListener("click", () => {
+              successModal.classList.remove("modal-open");
+            });
+          });
+        </script>
 
-<!-- JavaScript for Modal -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("contact-form");
-    const successModal = document.getElementById("success-modal");
-    const closeModal = document.getElementById("close-modal");
+        <br /><br />
 
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      successModal.classList.add("modal-open");
-      form.reset();
-    });
-
-    closeModal.addEventListener("click", () => {
-      successModal.classList.remove("modal-open");
-    });
-  });
-</script>
-    
-    <br><br>
-    
-      <!-- Map and Location Details -->
-      <div class="mx-auto flex flex-col md:flex-row items-start justify-between mt-10 gap-8 w-full max-w-6xl">
-        <!-- Map -->
-        <div class="w-full md:w-1/2 h-80 rounded-lg overflow-hidden shadow-md">
+        <!-- Map and Location Details -->
+        <div
+          class="mx-auto flex flex-col md:flex-row items-start justify-between mt-10 gap-8 w-full max-w-6xl"
+        >
+          <!-- Map -->
+          <div
+            class="w-full md:w-1/2 h-80 rounded-lg overflow-hidden shadow-md"
+          >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3155.825633924577!2d144.95839307611295!3d-37.816635078594455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675218ce840!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1613955409010!5m2!1sen!2sus"
               class="w-full h-full"
@@ -217,68 +326,87 @@
               tabindex="0"
             ></iframe>
           </div>
-    
-        <!-- Location Details -->
-        <div class="w-full md:w-1/2 bg-white shadow-md rounded-lg p-6">
-          <div class="mb-4">
-            <div class="flex items-center">
-              <img src="./images/location.png" class="w-6 h-6 mr-2" alt="Location">
-              <h2 class="text-lg font-medium text-gray-900">Our Office Address</h2>
+
+          <!-- Location Details -->
+          <div class="w-full md:w-1/2 bg-white shadow-md rounded-lg p-6">
+            <div class="mb-4">
+              <div class="flex items-center">
+                <img
+                  src="./images/location.png"
+                  class="w-6 h-6 mr-2"
+                  alt="Location"
+                />
+                <h2 class="text-lg font-medium text-gray-900">
+                  Our Office Address
+                </h2>
+              </div>
+              <p class="text-gray-600">
+                Addhayon Accadimic Care, Level 4, House 39, Road 27, Dhanmondi
+                R/A, Dhaka 1209, Bangladesh
+              </p>
             </div>
-            <p class="text-gray-600">
-            Addhayon Accadimic Care, Level 4, House 39, Road 27, Dhanmondi R/A, Dhaka 1209, Bangladesh
-            </p>
-          </div>
-          <div class="mb-4">
-            <div class="flex items-center">
-              <img src="./images/mail.png" class="w-6 h-6 mr-2" alt="Enquiry">
-              <h2 class="text-lg font-medium text-gray-900">General Enquiries</h2>
+            <div class="mb-4">
+              <div class="flex items-center">
+                <img
+                  src="./images/mail.png"
+                  class="w-6 h-6 mr-2"
+                  alt="Enquiry"
+                />
+                <h2 class="text-lg font-medium text-gray-900">
+                  General Enquiries
+                </h2>
+              </div>
+              <p class="text-gray-600">websupport@tuitionvault.com</p>
             </div>
-            <p class="text-gray-600">websupport@tuitionvault.com</p>
-          </div>
-          <div class="mb-4">
-            <div class="flex items-center">
-              <img src="./images/phone.png" class="w-6 h-6 mr-2" alt="Call">
-              <h2 class="text-lg font-medium text-gray-900">Call Us</h2>
+            <div class="mb-4">
+              <div class="flex items-center">
+                <img src="./images/phone.png" class="w-6 h-6 mr-2" alt="Call" />
+                <h2 class="text-lg font-medium text-gray-900">Call Us</h2>
+              </div>
+              <p class="text-gray-600">+8801521738141</p>
             </div>
-            <p class="text-gray-600">+8801521738141</p>
-          </div>
-          <div class="mb-4">
-            <div class="flex items-center">
-              <img src="./images/time.png" class="w-6 h-6 mr-2" alt="Call">
-            <h2 class="text-lg font-medium text-gray-900">Our Timing</h2>
-          </div>
-            <p class="text-gray-600">Mon - Sun : 10:00 AM - 07:00 PM</p>         
+            <div class="mb-4">
+              <div class="flex items-center">
+                <img src="./images/time.png" class="w-6 h-6 mr-2" alt="Call" />
+                <h2 class="text-lg font-medium text-gray-900">Our Timing</h2>
+              </div>
+              <p class="text-gray-600">Mon - Sun : 10:00 AM - 07:00 PM</p>
+            </div>
           </div>
         </div>
-      </div>
-      <br><br>
- </section>
- <br><br>
-</main>
+        <br /><br />
+      </section>
+      <br /><br />
+    </main>
 
-<br>
-<br>
-<footer class="w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
-    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="#" class="hover:underline">TuitionVault™</a>. All Rights Reserved.
-    </span>
-    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+    <br />
+    <br />
+    <footer
+      class="w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600"
+    >
+      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
+        >© 2024 <a href="#" class="hover:underline">TuitionVault™</a>. All
+        Rights Reserved.
+      </span>
+      <ul
+        class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
+      >
         <li>
-            <a href="#" class="hover:underline me-4 md:me-6">About</a>
+          <a href="#" class="hover:underline me-4 md:me-6">About</a>
         </li>
         <li>
-            <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+          <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
         </li>
         <li>
-            <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+          <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
         </li>
         <li>
-            <a href="#" class="hover:underline">Contact</a>
+          <a href="#" class="hover:underline">Contact</a>
         </li>
-    </ul>
-</footer>
- <script src="app.js"></script>
- <script src="index_app.js"></script>
- <script src="logout.js"></script>
-</body>
+      </ul>
+    </footer>
+    <script src="app.js"></script>
+    <script src="index_app.js"></script>
+    <script src="logout.js"></script>
+  </body>
 </html>
