@@ -104,73 +104,103 @@
     <h1 class="text-4xl font-semibold text-center mb-8">Contact Us</h1>
 
     <!-- Contact Form Section -->
-    <!-- <div class="mx-auto w-full bg-white shadow-lg max-w-4xl rounded-lg p-6 border-2 border-orange-500"> -->
-    <div class="mx-auto w-full bg-white shadow-lg max-w-4xl rounded-lg p-6">
-        <form action="#" method="POST" class="space-y-6">
-            <!-- Flex Row for Inputs -->
-            <div class="flex flex-col md:flex-row gap-6">
-                <!-- Left Column -->
-                <div class="flex-1 space-y-4">
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-100 text-gray-800 placeholder-gray-500"
-                            placeholder="Enter your full name"
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label for="mobile" class="block text-sm font-medium text-gray-700">Mobile Number</label>
-                        <input
-                            type="tel"
-                            id="mobile"
-                            name="mobile"
-                            class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-100 text-gray-800 placeholder-gray-500"
-                            placeholder="Enter your mobile number"
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700">Email ID</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-100 text-gray-800 placeholder-gray-500"
-                            placeholder="Enter your email address"
-                            required
-                        />
-                    </div>
-                </div>
-    
-                <!-- Right Column -->
-                <div class="flex-1">
-                    <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                    <textarea
-                        id="message"
-                        name="message"
-                        rows="8"
-                        class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-800 bg-gray-100 placeholder-gray-500"
-                        placeholder="Write your message here"
-                        required
-                    ></textarea>
-                </div>
-            </div>
-    
-            <!-- Submit Button -->
-            <div class="flex justify-center">
-                <button
-                    type="submit"
-                    class="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                >
-                    Submit
-                </button>
-            </div>
-        </form>
+<!-- Contact Form Section -->
+<div class="mx-auto w-full bg-white shadow-lg max-w-4xl rounded-lg p-6">
+  <form id="contact-form" action="#" method="POST" class="space-y-6">
+    <!-- Flex Row for Inputs -->
+    <div class="flex flex-col md:flex-row gap-6">
+      <!-- Left Column -->
+      <div class="flex-1 space-y-4">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-100 text-gray-800 placeholder-gray-500"
+            placeholder="Enter your full name"
+            required
+          />
+        </div>
+        <div>
+          <label for="mobile" class="block text-sm font-medium text-gray-700">Mobile Number</label>
+          <input
+            type="tel"
+            id="mobile"
+            name="mobile"
+            class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-100 text-gray-800 placeholder-gray-500"
+            placeholder="Enter your mobile number"
+            required
+          />
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email ID</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-100 text-gray-800 placeholder-gray-500"
+            placeholder="Enter your email address"
+            required
+          />
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="flex-1">
+        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="8"
+          class="mt-1 py-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-gray-800 bg-gray-100 placeholder-gray-500"
+          placeholder="Write your message here"
+          required
+        ></textarea>
+      </div>
     </div>
+
+    <!-- Submit Button -->
+    <div class="flex justify-center">
+      <button
+        type="submit"
+        class="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- Daisy UI Modal for Success Message -->
+<div id="success-modal" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Success!</h3>
+    <p class="py-4">Your message has been successfully submitted! Thank you for reaching out.</p>
+    <div class="modal-action">
+      <button id="close-modal" class="btn btn-primary">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript for Modal -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contact-form");
+    const successModal = document.getElementById("success-modal");
+    const closeModal = document.getElementById("close-modal");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      successModal.classList.add("modal-open");
+      form.reset();
+    });
+
+    closeModal.addEventListener("click", () => {
+      successModal.classList.remove("modal-open");
+    });
+  });
+</script>
     
     <br><br>
     
