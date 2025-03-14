@@ -12,10 +12,27 @@ const unauthMessage = document.getElementById("unauth-message");
 const loginButton = document.getElementById("login-button");
 const userProfileIcon = document.getElementById("user-profile-icon");
 
+// Mobile Menu Elements
+const mobileMenuButton = document.getElementById("mobile-menu-button");
+const mobileMenu = document.getElementById("mobile-menu");
+
+// Mobile Menu Links for Authenticated Users
+const myTuitionMobile = document.getElementById("my-tuition-mobile");
+const myApplicationsMobile = document.getElementById("my-applications-mobile");
+
+// Mobile Menu Links for Unauthenticated Users
+const loginButtonMobile = document.getElementById("login-button-mobile");
+const registerButtonMobile = document.getElementById("register-button-mobile");
+
+// Mobile Dropdown Options
+const profileOptionMobile = document.getElementById("profile-option-mobile");
+const historyOptionMobile = document.getElementById("history-option-mobile");
+const signoutOptionMobile = document.getElementById("signout-option-mobile");
+
 // Function to check if the user is authenticated by the token in localStorage
 function checkAuthStatus() {
   const token = localStorage.getItem("authToken");
-  return !!token; 
+  return !!token;
 }
 
 // Function to fetch user profile image from the API
@@ -40,15 +57,13 @@ async function fetchUserProfileImage() {
       const data = await response.json();
 
       if (data.personal_photo) {
-        
         const profileImageUrl = `https://tuitionvault.onrender.com/${data.personal_photo}`;
         userProfileIcon.src = profileImageUrl;
       } else {
         console.warn("Profile image not found, using default placeholder.");
         userProfileIcon.src = "images/user.png";
       }
-    } 
-    else {
+    } else {
       console.error("Failed to fetch profile image:", response.statusText);
       userProfileIcon.src = "images/user.png";
     }
@@ -63,8 +78,8 @@ function initializeUI() {
   const isAuthenticated = checkAuthStatus();
 
   if (isAuthenticated) {
-    // Show authenticated user options
-    authButtons.classList.add("hidden");
+    // Show authenticated user options in desktop navbar
+    authButtons.classList.add("hidden"); // Hide Login and Register buttons
     myTuition.classList.remove("hidden");
     myApplications.classList.remove("hidden");
     profileOption.classList.remove("hidden");
@@ -73,11 +88,22 @@ function initializeUI() {
     unauthMessage.classList.add("hidden");
     loginButton.classList.add("hidden");
 
+    // Show authenticated options in mobile menu
+    myTuitionMobile.classList.remove("hidden");
+    myApplicationsMobile.classList.remove("hidden");
+    profileOptionMobile.classList.remove("hidden");
+    historyOptionMobile.classList.remove("hidden");
+    signoutOptionMobile.classList.remove("hidden");
+
+    // Hide Login and Register buttons in mobile menu
+    loginButtonMobile.classList.add("hidden");
+    registerButtonMobile.classList.add("hidden");
+
     // Fetch and display the user's profile image
     fetchUserProfileImage();
   } else {
-    // Show unauthorized user options
-    authButtons.classList.remove("hidden");
+    // Show unauthorized user options in desktop navbar
+    authButtons.classList.remove("hidden"); // Show Login and Register buttons
     myTuition.classList.add("hidden");
     myApplications.classList.add("hidden");
     profileOption.classList.add("hidden");
@@ -85,6 +111,17 @@ function initializeUI() {
     signoutOption.classList.add("hidden");
     unauthMessage.classList.remove("hidden");
     loginButton.classList.remove("hidden");
+
+    // Hide authenticated options in mobile menu
+    myTuitionMobile.classList.add("hidden");
+    myApplicationsMobile.classList.add("hidden");
+    profileOptionMobile.classList.add("hidden");
+    historyOptionMobile.classList.add("hidden");
+    signoutOptionMobile.classList.add("hidden");
+
+    // Show Login and Register buttons in mobile menu
+    loginButtonMobile.classList.remove("hidden");
+    registerButtonMobile.classList.remove("hidden");
 
     // Set default image for unauthorized user
     userProfileIcon.src = "images/user.png";
@@ -101,7 +138,12 @@ profileToggle.addEventListener("click", () => {
   profileMenu.classList.toggle("hidden");
 });
 
-// Close notification and profile menus when clicking outside
+// Toggle mobile menu visibility
+mobileMenuButton.addEventListener("click", () => {
+  mobileMenu.classList.toggle("hidden");
+});
+
+// Close notification, profile, and mobile menus when clicking outside
 document.addEventListener("click", (event) => {
   if (!notificationBell.contains(event.target) && !notificationMessage.contains(event.target)) {
     notificationMessage.classList.add("hidden");
@@ -109,6 +151,10 @@ document.addEventListener("click", (event) => {
   if (!profileToggle.contains(event.target) && !profileMenu.contains(event.target)) {
     profileMenu.classList.add("hidden");
   }
+  if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+    mobileMenu.classList.add("hidden");
+  }
 });
 
+// Initialize the UI
 initializeUI();

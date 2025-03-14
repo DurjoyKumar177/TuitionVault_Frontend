@@ -20,8 +20,19 @@
             </a>
             <a href="index.html" class="text-lg font-bold text-white">TuitionVault</a>
           </div>
-            <!-- Navigation Links -->
-              <div class="flex space-x-4">
+          <!-- Hamburger Menu for Mobile -->
+          <div class="flex items-center sm:hidden">
+            <button id="mobile-menu-button" class="text-white hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-white">
+              <span class="sr-only">Open main menu</span>
+              <!-- Hamburger Icon -->
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+  
+          <!-- Navigation Links (Desktop) -->
+          <div class="hidden sm:flex sm:space-x-4">
                 <a href="index.html" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100">
                   Home
                 </a>
@@ -82,6 +93,46 @@
           </div>
         </div>
       </div>
+
+            <!-- Mobile Menu (Hidden by Default) -->
+            <div id="mobile-menu" class="sm:hidden hidden">
+              <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-blue-700 hover:text-gray-100">
+                  Home
+                </a>
+                <a href="tuitions.html" class="block rounded-md bg-blue-500 px-3 py-2 text-base font-medium text-white" aria-current="page">
+                  Job Board
+                </a>
+                <a id="my-tuition-mobile" href="my_tuition.html" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden">
+                  My Tuition
+                </a>
+                <a id="my-applications-mobile" href="my_application.html" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden">
+                  My Applications
+                </a>
+                <a href="contuct_us.html" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-blue-700 hover:text-gray-100">
+                  Contact Us
+                </a>
+              </div>
+        
+              <!-- Mobile Dropdown Options -->
+              <div class="px-2 pt-2 pb-3 space-y-1">
+                <a id="profile-option-mobile" href="profile.html" class="block px-3 py-2 text-base font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden">
+                  Your Profile
+                </a>
+                <a id="history-option-mobile" href="history.html" class="block px-3 py-2 text-base font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden">
+                  History
+                </a>
+                <a id="signout-option-mobile" href="#" onclick="logoutUser()" class="block px-3 py-2 text-base font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden">
+                  Sign Out
+                </a>
+                <a id="login-button-mobile" href="login.html" class="block px-3 py-2 text-base font-medium text-white hover:bg-blue-700 hover:text-gray-100">
+                  Login
+                </a>
+                <a id="register-button-mobile" href="sign_up.html" class="block px-3 py-2 text-base font-medium text-white hover:bg-blue-700 hover:text-gray-100">
+                  Register
+                </a>
+              </div>
+            </div>
     </nav>
   </header>
 

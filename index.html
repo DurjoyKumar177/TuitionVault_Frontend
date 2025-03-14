@@ -18,7 +18,7 @@
 
 
     <header class="sticky top-0 z-50">
-      <nav class="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 shadow-lg sticky top-0 z-50">
+      <nav class="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 shadow-lg">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div class="relative flex h-16 items-center justify-between">
             <!-- Logo and Name on the Left -->
@@ -29,9 +29,20 @@
               <a href="index.html" class="text-lg font-bold text-white">TuitionVault</a>
             </div>
     
-            <!-- Navigation Links -->
-            <div class="flex space-x-4">
-              <a href="index.html" class="rounded-md bg-blue-500 px-3 py-2 text-sm font-medium text-white " aria-current="page">
+          <!-- Hamburger Menu for Mobile -->
+          <div class="flex items-center sm:hidden">
+            <button id="mobile-menu-button" class="text-white hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-white">
+              <span class="sr-only">Open main menu</span>
+              <!-- Hamburger Icon -->
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+  
+          <!-- Navigation Links (Desktop) -->
+          <div class="hidden sm:flex sm:space-x-4">
+              <a href="index.html" class="rounded-md bg-blue-500 px-3 py-2 text-sm font-medium text-white" aria-current="page">
                 Home
               </a>
               <a href="tuitions.html" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100">
@@ -48,8 +59,8 @@
               </a>
             </div>
     
-            <!-- Right Section: Auth Buttons, Bell, and Profile -->
-            <div class="flex items-center space-x-4">
+            <!-- Right Section: Auth Buttons, Bell, and Profile (Desktop) -->
+            <div class="hidden sm:flex sm:items-center sm:space-x-4">
               <!-- Auth Buttons -->
               <div id="auth-buttons" class="flex items-center space-x-4">
                 <a href="login.html" class="z-10 rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 hover:text-gray-100">
@@ -90,16 +101,53 @@
             </div>
           </div>
         </div>
+    
+      <!-- Mobile Menu (Hidden by Default) -->
+      <div id="mobile-menu" class="sm:hidden hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+          <a href="index.html" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-blue-700 hover:text-gray-100">
+            Home
+          </a>
+          <a href="tuitions.html" class="block rounded-md bg-blue-500 px-3 py-2 text-base font-medium text-white" aria-current="page">
+            Job Board
+          </a>
+          <a id="my-tuition-mobile" href="my_tuition.html" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden">
+            My Tuition
+          </a>
+          <a id="my-applications-mobile" href="my_application.html" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden">
+            My Applications
+          </a>
+          <a href="contuct_us.html" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-blue-700 hover:text-gray-100">
+            Contact Us
+          </a>
+        </div>
+  
+        <!-- Mobile Dropdown Options -->
+        <div class="px-2 pt-2 pb-3 space-y-1">
+          <a id="profile-option-mobile" href="profile.html" class="block px-3 py-2 text-base font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden">
+            Your Profile
+          </a>
+          <a id="history-option-mobile" href="history.html" class="block px-3 py-2 text-base font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden">
+            History
+          </a>
+          <a id="signout-option-mobile" href="#" onclick="logoutUser()" class="block px-3 py-2 text-base font-medium text-white hover:bg-blue-700 hover:text-gray-100 hidden">
+            Sign Out
+          </a>
+          <a id="login-button-mobile" href="login.html" class="block px-3 py-2 text-base font-medium text-white hover:bg-blue-700 hover:text-gray-100">
+            Login
+          </a>
+          <a id="register-button-mobile" href="sign_up.html" class="block px-3 py-2 text-base font-medium text-white hover:bg-blue-700 hover:text-gray-100">
+            Register
+          </a>
+        </div>
+      </div>
       </nav>
     </header>
-    
-    
-    
 
     <main>
     <!-- banner Section -->
     <section
-      class="banner min-h-screen pt-10">
+      class="banner min-h-screen pt-10 px-2">
       <div class="flex">
         <div class="w-1/2 p-10">
           <!-- Left Section -->
@@ -394,10 +442,10 @@
     </section>
 
     <!-- about us -->
-    <section class="about-us mt-10">
+    <section class="about-us mt-10 px-2 md:px-14">
       <div class="max-w-7xl mx-auto py-12 border-b border-solid border-gray-300 flex flex-col md:flex-row items-center space-x-8">
         <!-- Text Section -->
-        <div class="w-2/3 px-8 text-center md:text-center space-y-6">
+        <div class="w-2/3 md:px-6 text-center md:text-center space-y-6">
             <h2 class="text-2xl font-semibold text-gray-800">ABOUT US</h2>
             <p class="text-gray-600 leading-relaxed">We connect students and tutors through a secure, user-friendly platform designed to simplify education. With advanced search filters, personalized profiles, and email-verified accounts, finding and managing tuitions has never been easier. Tutors can explore opportunities tailored to their needs, while students can apply and track their applications seamlessly. Our platform ensures reliability, efficiency, and a hassle-free experience for everyone involved. At Tuition Media Platform, we’re committed to empowering education and fostering meaningful connections between learners and educators.</p>
         </div>
@@ -410,71 +458,73 @@
     </div>
     </section>
 
-    <!-- why us -->
-    <section class="relative h-fit mt-10 flex justify-center pt-20 pb-20 m-20">
-      <!-- Background Image -->
-      <div class="absolute inset-0 bg-[url('./resource/bg3.jpg')] bg-cover bg-center opacity-20 rounded-xl"></div>
-    
-      <div class="relative mt-90">
-        <h2 class="text-center text-4xl font-bold mb-8">Why us</h2>
-        <div class="flex w-full gap-16">
-          <!-- Left Column -->
-          <div class="space-y-12">
-            <!-- Card 1 -->
-            <div class="card card-side bg-base-100 shadow-xl w-[400px] h-56">
-              <figure class="flex items-center p-4">
-                <img class="h-16 w-16 flex-shrink-0" src="./images/connection.png" alt="Connection Icon" />
-              </figure>
-              <div class="flex-1 p-6 flex flex-col justify-between">
-                <h2 class="card-title">Empowering Students and Tutors</h2>
-                <p>Connecting students and tutors for tailored learning experiences through a user-friendly online platform.</p>
-              </div>
-            </div>
-            <!-- Card 2 -->
-            <div class="card card-side bg-base-100 shadow-xl w-[400px] h-56">
-              <figure class="flex items-center p-4">
-                <img class="h-16 w-16 flex-shrink-0" src="./images/task_com.png" alt="Tasks Icon" />
-              </figure>
-              <div class="flex-1 p-6 flex flex-col justify-between">
-                <h2 class="card-title">Efficient Administration</h2>
-                <p>Admins can easily add, edit, and delete tuition listings while managing applicants, ensuring an up-to-date and user-friendly system.</p>
-              </div>
-            </div>
-          </div>
-          <!-- Right Column -->
-          <div class="space-y-12">
-            <!-- Card 3 -->
-            <div class="card card-side bg-base-100 shadow-xl w-[400px] h-56">
-              <figure class="flex items-center p-4">
-                <img class="h-16 w-16 flex-shrink-0" src="./images/sequrity.webp" alt="Security Icon" />
-              </figure>
-              <div class="flex-1 p-6 flex flex-col justify-between">
-                <h2 class="card-title">Secure and User-Friendly</h2>
-                <p>Robust registration with email verification ensures account security. Users can manage profiles, track applications, and filter tuition by class.</p>
-              </div>
-            </div>
-            <!-- Card 4 -->
-            <div class="card card-side bg-base-100 shadow-xl w-[400px] h-56">
-              <figure class="flex items-center p-4">
-                <img class="h-16 w-16 flex-shrink-0" src="./images/gearGreen.png" alt="Tech Icon" />
-              </figure>
-              <div class="flex-1 p-6 flex flex-col justify-between">
-                <h2 class="card-title">Tech-Driven Learning</h2>
-                <p>Utilizing technology to save time, enhance accessibility, and provide a reliable platform for students and admins in education management.</p>
-              </div>
-            </div>
-          </div>
+<!-- Why Us Section -->
+<section class="h-fit mt-10 flex flex-col items-center px-4 sm:px-6 md:px-8 pt-16 pb-16">
+  <!-- Heading -->
+  <h2 class="text-center text-3xl sm:text-4xl font-bold mb-12 w-full">Why Us</h2>
+
+  <!-- Cards Container (Centered Layout) -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 w-full max-w-5xl">
+    <!-- Card 1 -->
+    <div class="flex flex-col items-center">
+      <div class="card card-side bg-base-100 shadow-xl w-full max-w-[400px] h-auto p-4">
+        <figure class="flex items-center p-2">
+          <img class="h-14 w-14 flex-shrink-0" src="./images/connection.png" alt="Connection Icon" />
+        </figure>
+        <div class="flex-1 p-4">
+          <h2 class="card-title text-lg sm:text-xl">Empowering Students and Tutors</h2>
+          <p class="text-sm sm:text-base">Connecting students and tutors for tailored learning experiences through a user-friendly online platform.</p>
         </div>
       </div>
-    </section>
-    
-    
+    </div>
+
+    <!-- Card 2 -->
+    <div class="flex flex-col items-center">
+      <div class="card card-side bg-base-100 shadow-xl w-full max-w-[400px] h-auto p-4">
+        <figure class="flex items-center p-2">
+          <img class="h-14 w-14 flex-shrink-0" src="./images/task_com.png" alt="Tasks Icon" />
+        </figure>
+        <div class="flex-1 p-4">
+          <h2 class="card-title text-lg sm:text-xl">Efficient Administration</h2>
+          <p class="text-sm sm:text-base">Admins can easily add, edit, and delete tuition listings while managing applicants, ensuring an up-to-date and user-friendly system.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="flex flex-col items-center">
+      <div class="card card-side bg-base-100 shadow-xl w-full max-w-[400px] h-auto p-4">
+        <figure class="flex items-center p-2">
+          <img class="h-14 w-14 flex-shrink-0" src="./images/sequrity.webp" alt="Security Icon" />
+        </figure>
+        <div class="flex-1 p-4">
+          <h2 class="card-title text-lg sm:text-xl">Secure and User-Friendly</h2>
+          <p class="text-sm sm:text-base">Robust registration with email verification ensures account security. Users can manage profiles, track applications, and filter tuition by class.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="flex flex-col items-center">
+      <div class="card card-side bg-base-100 shadow-xl w-full max-w-[400px] h-auto p-4">
+        <figure class="flex items-center p-2">
+          <img class="h-14 w-14 flex-shrink-0" src="./images/gearGreen.png" alt="Tech Icon" />
+        </figure>
+        <div class="flex-1 p-4">
+          <h2 class="card-title text-lg sm:text-xl">Tech-Driven Learning</h2>
+          <p class="text-sm sm:text-base">Utilizing technology to save time, enhance accessibility, and provide a reliable platform for students and admins in education management.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
-<!-- Tutorial -->
-<section class="tutorial px-8">
+<!-- Tutorial Section -->
+<section class="tutorial px-4 sm:px-8">
   <div class="max-w-7xl mx-auto py-12 flex flex-col items-center">
-    <h2 class="text-2xl font-semibold text-gray-800 text-center mb-8">Tutorial</h2>
+    <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8">Tutorial</h2>
+
     <div class="flex flex-col md:flex-row justify-center items-center gap-8">
       <!-- Video 1 -->
       <div class="flex flex-col items-center">
@@ -506,6 +556,7 @@
     </div>
   </div>
 </section>
+
 
 
 <!-- User review section -->
