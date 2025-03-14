@@ -117,3 +117,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   fetchAndDisplayCards("https://tuitionvault.onrender.com/tutions/posts/");
 });
+
+const filterToggle = document.getElementById('filter-toggle');
+const filterSection = document.getElementById('filter-section');
+
+filterToggle.addEventListener('click', () => {
+  filterSection.classList.toggle('hidden');
+});
